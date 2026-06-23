@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EV Fleet Manager Portal - Dashboard</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -38,78 +39,93 @@
       border-left: 2px solid #10B981;
       color: #10B981;
     }
+
     .neon-glow-border {
       box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
       border-color: rgba(6, 182, 212, 0.3);
     }
+
     .badge-locked {
       filter: grayscale(1) opacity(0.4);
     }
   </style>
 </head>
+
 <body class="bg-[#0B0F19] text-[#F3F4F6] min-h-screen flex flex-col lg:flex-row overflow-x-hidden">
 
   <!-- Sidebar Navigation (Desktop) -->
-  <aside class="hidden lg:flex flex-col w-64 glass-panel border-r border-gray-900 min-h-screen p-6 justify-between shrink-0">
+  <aside
+    class="hidden lg:flex flex-col w-64 glass-panel border-r border-gray-900 min-h-screen p-6 justify-between shrink-0">
     <div class="space-y-8">
-      <!-- Portal Brand -->
       <div class="flex justify-between items-center">
-        <a class="flex items-center gap-2 text-[#F3F4F6] text-lg font-heading tracking-wider" href="index.html">
+        <a class="brand-logo flex items-center gap-2 text-lg" href="index.html">
           <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
-          <span>EV <span class="text-[#10B981] font-medium">FLEET</span></span>
+          <span>EV <span class="brand-green">FLEET</span></span>
         </a>
       </div>
- 
+
       <!-- Navigation Links -->
       <nav class="space-y-1">
-        <button onclick="showSection('overview')" id="nav-overview" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all active">
+        <button onclick="showSection('overview')" id="nav-overview"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all active">
           <i class="fa-solid fa-chart-pie w-4"></i> Dashboard
         </button>
-        <button onclick="showSection('progress')" id="nav-progress" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+        <button onclick="showSection('progress')" id="nav-progress"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
           <i class="fa-solid fa-chart-line w-4"></i> Fleet Analytics
         </button>
-        <button onclick="showSection('log')" id="nav-log" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+        <button onclick="showSection('log')" id="nav-log"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
           <i class="fa-solid fa-clipboard-list w-4"></i> Charging Sessions
         </button>
-        <button onclick="showSection('achievements')" id="nav-achievements" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+        <button onclick="showSection('achievements')" id="nav-achievements"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
           <i class="fa-solid fa-bell w-4"></i> System Alerts
         </button>
-        <button onclick="showSection('routes')" id="nav-routes" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+        <button onclick="showSection('routes')" id="nav-routes"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
           <i class="fa-solid fa-network-wired w-4"></i> Charger Directory
         </button>
-        <button onclick="showSection('bookings')" id="nav-bookings" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+        <button onclick="showSection('bookings')" id="nav-bookings"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
           <i class="fa-solid fa-clock w-4"></i> Charging Schedules
         </button>
-        <button onclick="showSection('events')" id="nav-events" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+        <button onclick="showSection('events')" id="nav-events"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
           <i class="fa-solid fa-id-card w-4"></i> RFID Key Manager
         </button>
-        <button onclick="showSection('membership')" id="nav-membership" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+        <button onclick="showSection('membership')" id="nav-membership"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
           <i class="fa-solid fa-credit-card w-4"></i> Billing & Tariffs
         </button>
-        <button onclick="showSection('profile')" id="nav-profile" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+        <button onclick="showSection('profile')" id="nav-profile"
+          class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
           <i class="fa-solid fa-circle-user w-4"></i> Depot Profile
         </button>
       </nav>
     </div>
- 
+
     <!-- User Section footer -->
     <div class="flex items-center gap-3 border-t border-gray-900 pt-4">
       <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-[#10B981]/40 shrink-0">
-        <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg" alt="Marcus Vance" class="w-full h-full object-cover object-top">
+        <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg" alt="Marcus Vance"
+          class="w-full h-full object-cover object-top">
       </div>
       <div>
         <p class="text-xs font-heading">Marcus Vance</p>
-        <a href="index.html" class="inline-flex items-center gap-1 text-xs font-medium text-white bg-red-500/80 hover:bg-red-500 px-2 py-0.5 rounded-md transition-colors mt-0.5">
+        <a href="index.html"
+          class="inline-flex items-center gap-1 text-xs font-medium text-white bg-red-500/80 hover:bg-red-500 px-2 py-0.5 rounded-md transition-colors mt-0.5">
           <i class="fa-solid fa-right-from-bracket text-[10px]"></i> Log Out
         </a>
       </div>
     </div>
   </aside>
- 
+
   <!-- Right Panel Content Wrapper -->
   <div class="flex-1 flex flex-col min-h-screen w-full max-w-full overflow-x-hidden">
     <!-- Top Header Bar -->
-    <header class="w-full glass-panel border-b border-gray-900 px-4 md:px-6 py-4 flex justify-between items-center bg-[#0B0F19]/40 backdrop-blur-md sticky top-0 z-30">
+    <header
+      class="w-full glass-panel border-b border-gray-900 px-4 md:px-6 py-4 flex justify-between items-center bg-[#0B0F19]/40 backdrop-blur-md sticky top-0 z-30">
       <!-- Left side -->
       <div class="flex items-center gap-3">
         <!-- Mobile Toggle (Hamburger Button) -->
@@ -117,9 +133,9 @@
           <i class="fa-solid fa-bars"></i>
         </button>
         <!-- Mobile Brand Logo -->
-        <a class="lg:hidden flex items-center gap-2 text-[#F3F4F6] text-sm font-heading tracking-wider" href="index.html">
+        <a class="brand-logo lg:hidden flex items-center gap-2" href="index.html">
           <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
-          <span>EV <span class="text-[#10B981] font-medium">FLEET</span> <span class="text-[8px] text-gray-500 font-sans">PORTAL</span></span>
+          <span>EV <span class="brand-green">FLEET</span></span>
         </a>
         <!-- Desktop Welcome Message -->
         <div class="hidden lg:block">
@@ -128,15 +144,20 @@
         </div>
       </div>
       <div class="flex items-center gap-3">
-        <button id="rtl-toggle" class="hidden lg:flex w-9 h-9 items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors" title="Toggle RTL">
+        <button id="rtl-toggle"
+          class="hidden lg:flex w-9 h-9 items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors"
+          title="Toggle RTL">
           <i id="rtl-icon" class="fa-solid fa-right-left text-sm text-gray-300"></i>
         </button>
-        <button id="theme-toggle" class="hidden lg:flex w-9 h-9 items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors" title="Toggle Theme">
+        <button id="theme-toggle"
+          class="hidden lg:flex w-9 h-9 items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors"
+          title="Toggle Theme">
           <i id="theme-icon" class="fa-regular fa-sun text-[#F59E0B] text-sm"></i>
         </button>
         <div class="flex items-center gap-2 lg:pl-3 lg:border-l lg:border-gray-800">
           <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-[#10B981]/40 shrink-0">
-            <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg" alt="Marcus Vance" class="w-full h-full object-cover object-top">
+            <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg" alt="Marcus Vance"
+              class="w-full h-full object-cover object-top">
           </div>
           <span class="hidden sm:inline text-xs font-heading text-[#F3F4F6]">Marcus Vance</span>
         </div>
@@ -144,51 +165,64 @@
     </header>
 
     <!-- Mobile Dropdown Navigation for Dashboard -->
-    <div id="mobile-menu" class="hidden fixed top-[73px] left-0 w-full glass-panel py-6 px-4 z-40 lg:hidden flex flex-col gap-2 border-b border-gray-900">
-      <button onclick="showSection('overview'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+    <div id="mobile-menu"
+      class="hidden fixed top-[73px] left-0 w-full glass-panel py-6 px-4 z-40 lg:hidden flex flex-col gap-2 border-b border-gray-900">
+      <button onclick="showSection('overview'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-overview"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all active">
         <i class="fa-solid fa-chart-pie w-4"></i> Dashboard
       </button>
-      <button onclick="showSection('progress'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+      <button onclick="showSection('progress'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-progress"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
         <i class="fa-solid fa-chart-line w-4"></i> Fleet Analytics
       </button>
-      <button onclick="showSection('log'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+      <button onclick="showSection('log'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-log"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
         <i class="fa-solid fa-clipboard-list w-4"></i> Charging Sessions
       </button>
-      <button onclick="showSection('achievements'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+      <button onclick="showSection('achievements'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-achievements"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
         <i class="fa-solid fa-bell w-4"></i> System Alerts
       </button>
-      <button onclick="showSection('routes'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+      <button onclick="showSection('routes'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-routes"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
         <i class="fa-solid fa-network-wired w-4"></i> Charger Directory
       </button>
-      <button onclick="showSection('bookings'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+      <button onclick="showSection('bookings'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-bookings"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
         <i class="fa-solid fa-clock w-4"></i> Charging Schedules
       </button>
-      <button onclick="showSection('events'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+      <button onclick="showSection('events'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-events"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
         <i class="fa-solid fa-id-card w-4"></i> RFID Key Manager
       </button>
-      <button onclick="showSection('membership'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+      <button onclick="showSection('membership'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-membership"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
         <i class="fa-solid fa-credit-card w-4"></i> Billing & Tariffs
       </button>
-      <button onclick="showSection('profile'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+      <button onclick="showSection('profile'); document.getElementById('mobile-menu').classList.add('hidden');" id="mobile-nav-profile"
+        class="mobile-nav-link w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
         <i class="fa-solid fa-circle-user w-4"></i> Depot Profile
       </button>
       <div class="h-[1px] bg-gray-800 my-2"></div>
       <div class="flex justify-center items-center gap-4 py-2">
-        <button id="rtl-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors text-white">
+        <button id="rtl-toggle-mobile"
+          class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors text-white">
           <i class="fa-solid fa-right-left text-xs text-gray-300"></i>
         </button>
-        <button id="theme-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors text-white">
+        <button id="theme-toggle-mobile"
+          class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors text-white">
           <i id="theme-icon-mobile" class="fa-regular fa-sun text-[#F59E0B] text-xs"></i>
         </button>
       </div>
-      <a href="index.html" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-red-400 hover:bg-red-950/20 transition-all">
+      <a href="index.html"
+        class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-red-400 hover:bg-red-950/20 transition-all">
         <i class="fa-solid fa-right-from-bracket w-4"></i> Log Out
       </a>
     </div>
 
     <!-- Main Content Box -->
     <main class="flex-1 p-3 md:p-8 lg:p-10 overflow-y-auto lg:mb-0 w-full max-w-full overflow-x-hidden">
-      
+
       <!-- 1. OVERVIEW PANEL -->
       <div id="panel-overview" class="dashboard-panel space-y-8">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
@@ -196,31 +230,36 @@
             <h3 class="text-lg font-heading">Depot Portal Overview</h3>
             <p class="text-xs text-[#9CA3AF]">Real-time charger metrics and grid states</p>
           </div>
-          <button onclick="triggerQuickLog()" class="px-4 py-2 rounded-xl bg-[#10B981] hover:bg-[#10B981]/90 text-white font-medium text-xs flex items-center gap-1.5 shadow-lg shadow-[#10B981]/20 shrink-0">
+          <button onclick="triggerQuickLog()"
+            class="px-4 py-2 rounded-xl bg-[#10B981] hover:bg-[#10B981]/90 text-white font-medium text-xs flex items-center gap-1.5 shadow-lg shadow-[#10B981]/20 shrink-0">
             <i class="fa-solid fa-plus"></i> Quick Log Session
           </button>
         </div>
- 
+
         <!-- Stats Cards -->
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
-            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Peak Grid Load</span>
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Peak Grid
+              Load</span>
             <p class="text-sm sm:text-2xl font-heading text-[#06B6D4] whitespace-nowrap">142 kW</p>
           </div>
           <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
-            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Active Chargers</span>
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Active
+              Chargers</span>
             <p class="text-sm sm:text-2xl font-heading text-[#10B981]">18 / 20</p>
           </div>
           <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
-            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Energy Delivered</span>
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Energy
+              Delivered</span>
             <p class="text-sm sm:text-2xl font-heading text-[#F59E0B]">112 MWh</p>
           </div>
           <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
-            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Online Uptime</span>
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Online
+              Uptime</span>
             <p class="text-sm sm:text-2xl font-heading text-emerald-400">99.9%</p>
           </div>
         </div>
- 
+
         <!-- Overview Charts & Mini Logs -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full min-w-0">
           <div class="lg:col-span-8 glass-panel p-4 sm:p-6 rounded-2xl space-y-4 min-w-0">
@@ -246,6 +285,20 @@
                   <p class="text-[10px] text-[#9CA3AF]">Bus #12 fully charged at Charger #03</p>
                 </div>
               </div>
+              <div class="flex items-center gap-3 p-2 bg-[#0B0F19]/40 rounded-xl">
+                <i class="fa-solid fa-bolt text-cyan-400 text-lg"></i>
+                <div>
+                  <h5 class="text-xs font-heading">Grid Sync Complete</h5>
+                  <p class="text-[10px] text-[#9CA3AF]">Optimized off-peak scheduling activated</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-2 bg-[#0B0F19]/40 rounded-xl">
+                <i class="fa-solid fa-circle-xmark text-red-500 text-lg"></i>
+                <div>
+                  <h5 class="text-xs font-heading">Charger #05 Offline</h5>
+                  <p class="text-[10px] text-[#9CA3AF]">Connector safety ground fault detected</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -258,10 +311,115 @@
           <p class="text-xs text-[#9CA3AF]">Energy consumption metrics across weeks.</p>
         </div>
 
+        <!-- Analytics Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+          <div class="glass-panel p-4 rounded-xl">
+            <span class="text-[10px] uppercase text-[#9CA3AF]">CO2 Offsets</span>
+            <p class="text-lg font-heading text-emerald-400">14.8 Tons</p>
+            <div class="w-full bg-gray-800 h-1 rounded-full mt-2 overflow-hidden">
+              <div class="bg-emerald-500 h-full w-[74%]"></div>
+            </div>
+            <span class="text-[8px] text-[#9CA3AF] mt-1 block">74% of Monthly Target</span>
+          </div>
+          <div class="glass-panel p-4 rounded-xl">
+            <span class="text-[10px] uppercase text-[#9CA3AF]">Avg Charge Duration</span>
+            <p class="text-lg font-heading text-[#06B6D4]">54 mins</p>
+            <div class="w-full bg-gray-800 h-1 rounded-full mt-2 overflow-hidden">
+              <div class="bg-[#06B6D4] h-full w-[85%]"></div>
+            </div>
+            <span class="text-[8px] text-[#9CA3AF] mt-1 block">85% connector efficiency</span>
+          </div>
+          <div class="glass-panel p-4 rounded-xl">
+            <span class="text-[10px] uppercase text-[#9CA3AF]">Peak Hour Cost Saved</span>
+            <p class="text-lg font-heading text-[#F59E0B]">$1,240</p>
+            <div class="w-full bg-gray-800 h-1 rounded-full mt-2 overflow-hidden">
+              <div class="bg-[#F59E0B] h-full w-[62%]"></div>
+            </div>
+            <span class="text-[8px] text-[#9CA3AF] mt-1 block">62% TOU tariff optimization</span>
+          </div>
+          <div class="glass-panel p-4 rounded-xl">
+            <span class="text-[10px] uppercase text-[#9CA3AF]">Connector Utilization</span>
+            <p class="text-lg font-heading text-[#10B981]">88%</p>
+            <div class="w-full bg-gray-800 h-1 rounded-full mt-2 overflow-hidden">
+              <div class="bg-emerald-400 h-full w-[88%]"></div>
+            </div>
+            <span class="text-[8px] text-[#9CA3AF] mt-1 block">88% active runtime slots</span>
+          </div>
+        </div>
+
         <div class="glass-panel p-6 rounded-2xl space-y-4 min-w-0">
           <h4 class="text-sm font-heading">Weekly Load Profiling (kWh)</h4>
           <div class="h-80 relative w-full overflow-hidden">
             <canvas id="fullProgressChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Additional Charts & Lists Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="glass-panel p-6 rounded-2xl space-y-4">
+            <h4 class="text-sm font-heading">Energy Source Allocation</h4>
+            <div class="h-64 relative w-full flex items-center justify-center">
+              <div
+                class="w-full h-full flex items-center justify-center bg-[#0B0F19]/40 rounded-xl border border-gray-900 p-4">
+                <!-- Mock Pie Chart UI -->
+                <div
+                  class="relative w-40 h-40 rounded-full border-8 border-cyan-500 flex items-center justify-center shrink-0">
+                  <div
+                    class="absolute inset-0 rounded-full border-8 border-transparent border-t-emerald-500 border-r-emerald-500">
+                  </div>
+                  <div class="absolute inset-0 rounded-full border-8 border-transparent border-l-yellow-500"></div>
+                  <div class="text-center">
+                    <span class="text-lg font-heading">78%</span>
+                    <p class="text-[8px] text-[#9CA3AF]">Renewable</p>
+                  </div>
+                </div>
+                <div class="ml-6 space-y-2 text-[10px]">
+                  <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                    Solar Grid (45%)</div>
+                  <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span> Wind
+                    Farm (33%)</div>
+                  <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                    Hydro power (12%)</div>
+                  <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-gray-600"></span>
+                    Commercial (10%)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-panel p-6 rounded-2xl space-y-4">
+            <h4 class="text-sm font-heading">Top Energy Consuming Vehicles</h4>
+            <div class="space-y-3.5">
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1">
+                  <span>Volvo Electric Transit (Bus #08)</span>
+                  <span class="font-heading text-emerald-400">4,210 kWh</span>
+                </div>
+                <div class="w-full bg-gray-900 h-1.5 rounded-full">
+                  <div class="bg-emerald-400 h-full w-[82%]"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1">
+                  <span>Ford E-Transit (Van #14)</span>
+                  <span class="font-heading text-[#06B6D4]">3,150 kWh</span>
+                </div>
+                <div class="w-full bg-gray-900 h-1.5 rounded-full">
+                  <div class="bg-cyan-400 h-full w-[65%]"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center text-xs mb-1">
+                  <span>Tesla Semi Depot Prototype</span>
+                  <span class="font-heading text-[#F59E0B]">2,800 kWh</span>
+                </div>
+                <div class="w-full bg-gray-900 h-1.5 rounded-full">
+                  <div class="bg-[#F59E0B] h-full w-[54%]"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -273,13 +431,16 @@
             <h2 class="text-xl font-heading">Charging Sessions Log</h2>
             <p class="text-xs text-[#9CA3AF]">History of vehicle charging transactions.</p>
           </div>
-          <button onclick="openLogModal()" class="px-4 py-2 rounded-xl bg-[#10B981] text-white text-xs font-medium"><i class="fa-solid fa-plus mr-1"></i> Log Session</button>
+          <button onclick="openLogModal()" class="px-4 py-2 rounded-xl bg-[#10B981] text-white text-xs font-medium"><i
+              class="fa-solid fa-plus mr-1"></i> Log Session</button>
         </div>
 
         <!-- Logs Filter bar -->
         <div class="flex flex-col sm:flex-row gap-4 justify-between items-center glass-panel p-4 rounded-xl w-full">
-          <input type="text" id="logSearch" placeholder="Search by Charger ID..." class="px-4 py-1.5 rounded-lg bg-[#0B0F19] border border-gray-800 text-xs w-full sm:max-w-xs focus:outline-none focus:border-[#06B6D4]">
-          <select id="logGradeFilter" class="w-full sm:w-auto px-4 py-1.5 rounded-lg bg-[#0B0F19] border border-gray-800 text-xs focus:outline-none focus:border-[#06B6D4]">
+          <input type="text" id="logSearch" placeholder="Search by Charger ID..."
+            class="px-4 py-1.5 rounded-lg bg-[#0B0F19] border border-gray-800 text-xs w-full sm:max-w-xs focus:outline-none focus:border-[#06B6D4]">
+          <select id="logGradeFilter"
+            class="w-full sm:w-auto px-4 py-1.5 rounded-lg bg-[#0B0F19] border border-gray-800 text-xs focus:outline-none focus:border-[#06B6D4]">
             <option value="all">All Connectors</option>
             <option value="CCS">CCS</option>
             <option value="J1772">J1772</option>
@@ -290,7 +451,7 @@
         <!-- Logs Table -->
         <div class="glass-panel rounded-2xl overflow-hidden">
           <div class="table-responsive">
-            <table class="table table-dark table-hover mb-0 text-xs" id="climbLogTable">
+            <table class="table table-hover mb-0 text-xs" id="climbLogTable">
               <thead>
                 <tr class="border-b border-gray-800 text-[#9CA3AF]">
                   <th class="py-3 px-4">Date</th>
@@ -311,9 +472,47 @@
                 <tr>
                   <td class="py-3 px-4 text-gray-500">2026-06-16</td>
                   <td class="py-3 px-4 font-medium">Charger #02</td>
-                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#06B6D4]/20 text-[#06B6D4]">J1772</span></td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#06B6D4]/20 text-[#06B6D4]">J1772</span>
+                  </td>
                   <td class="py-3 px-4 text-center">120</td>
                   <td class="py-3 px-4 text-right text-emerald-400">22.8 kWh</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 text-gray-500">2026-06-15</td>
+                  <td class="py-3 px-4 font-medium">Charger #01</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#10B981]/20 text-[#10B981]">CCS</span></td>
+                  <td class="py-3 px-4 text-center">50</td>
+                  <td class="py-3 px-4 text-right text-emerald-400">75.1 kWh</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 text-gray-500">2026-06-14</td>
+                  <td class="py-3 px-4 font-medium">Charger #03</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#F59E0B]/20 text-[#F59E0B]">Type 2
+                      AC</span></td>
+                  <td class="py-3 px-4 text-center">180</td>
+                  <td class="py-3 px-4 text-right text-emerald-400">41.2 kWh</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 text-gray-500">2026-06-12</td>
+                  <td class="py-3 px-4 font-medium">Charger #05</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#10B981]/20 text-[#10B981]">CCS</span></td>
+                  <td class="py-3 px-4 text-center">35</td>
+                  <td class="py-3 px-4 text-right text-emerald-400">48.9 kWh</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 text-gray-500">2026-06-10</td>
+                  <td class="py-3 px-4 font-medium">Charger #02</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#06B6D4]/20 text-[#06B6D4]">J1772</span>
+                  </td>
+                  <td class="py-3 px-4 text-center">90</td>
+                  <td class="py-3 px-4 text-right text-emerald-400">18.5 kWh</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 text-gray-500">2026-06-08</td>
+                  <td class="py-3 px-4 font-medium">Charger #06</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#10B981]/20 text-[#10B981]">CCS</span></td>
+                  <td class="py-3 px-4 text-center">60</td>
+                  <td class="py-3 px-4 text-right text-emerald-400">82.3 kWh</td>
                 </tr>
               </tbody>
             </table>
@@ -328,24 +527,69 @@
           <p class="text-xs text-[#9CA3AF]">Earned depot operational milestones and badges.</p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           <!-- Badge 1 -->
-          <div onclick="clickBadge('First Plugged')" class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
+          <div onclick="clickBadge('First Plugged')"
+            class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
             <i class="fa-solid fa-plug text-emerald-400 text-3xl"></i>
             <h5 class="text-xs font-heading">First Plugged</h5>
             <p class="text-[9px] text-[#9CA3AF]">Unlocked</p>
           </div>
           <!-- Badge 2 -->
-          <div onclick="clickBadge('10 MWh Delivered')" class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
+          <div onclick="clickBadge('10 MWh Delivered')"
+            class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
             <i class="fa-solid fa-charging-station text-blue-400 text-3xl"></i>
             <h5 class="text-xs font-heading">10 MWh Delivered</h5>
             <p class="text-[9px] text-[#9CA3AF]">Unlocked</p>
           </div>
           <!-- Badge 3 -->
-          <div id="badge-50" onclick="unlockFiftyBadge()" class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-650 transition-colors badge-locked">
+          <div id="badge-50" onclick="unlockFiftyBadge()"
+            class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-650 transition-colors badge-locked">
             <i class="fa-solid fa-city text-[#F59E0B] text-3xl"></i>
             <h5 class="text-xs font-heading">Grid Resilient</h5>
             <p class="text-[9px] text-gray-500" id="badge-50-label">Locked</p>
+          </div>
+          <!-- Badge 4 -->
+          <div onclick="clickBadge('Carbon Champion')"
+            class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
+            <i class="fa-solid fa-leaf text-green-400 text-3xl"></i>
+            <h5 class="text-xs font-heading">Carbon Champion</h5>
+            <p class="text-[9px] text-[#9CA3AF]">Unlocked</p>
+          </div>
+          <!-- Badge 5 -->
+          <div onclick="clickBadge('Peak Shaver')"
+            class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
+            <i class="fa-solid fa-scissors text-purple-400 text-3xl"></i>
+            <h5 class="text-xs font-heading">Peak Shaver</h5>
+            <p class="text-[9px] text-[#9CA3AF]">Unlocked</p>
+          </div>
+          <!-- Badge 6 -->
+          <div onclick="clickBadge('Uptime Hero')"
+            class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
+            <i class="fa-solid fa-shield-halved text-cyan-400 text-3xl"></i>
+            <h5 class="text-xs font-heading">Uptime Hero</h5>
+            <p class="text-[9px] text-[#9CA3AF]">Unlocked</p>
+          </div>
+          <!-- Badge 7 -->
+          <div onclick="clickBadge('Solar Optimizer')"
+            class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
+            <i class="fa-solid fa-sun text-yellow-400 text-3xl"></i>
+            <h5 class="text-xs font-heading">Solar Optimizer</h5>
+            <p class="text-[9px] text-[#9CA3AF]">Unlocked</p>
+          </div>
+          <!-- Badge 8 -->
+          <div onclick="clickBadge('Fleet Commander')"
+            class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
+            <i class="fa-solid fa-truck-moving text-orange-400 text-3xl"></i>
+            <h5 class="text-xs font-heading">Fleet Commander</h5>
+            <p class="text-[9px] text-[#9CA3AF]">Unlocked</p>
+          </div>
+          <!-- Badge 9 -->
+          <div onclick="clickBadge('Grid Master')"
+            class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
+            <i class="fa-solid fa-network-wired text-indigo-400 text-3xl"></i>
+            <h5 class="text-xs font-heading">Grid Master</h5>
+            <p class="text-[9px] text-[#9CA3AF]">Unlocked</p>
           </div>
         </div>
       </div>
@@ -359,13 +603,15 @@
 
         <!-- Filters -->
         <div class="flex flex-col sm:flex-row gap-3 glass-panel p-4 rounded-xl text-xs w-full">
-          <select id="routeWallFilter" class="w-full sm:w-auto bg-[#0B0F19] border border-gray-800 px-3 py-1.5 rounded-lg focus:outline-none focus:border-[#06B6D4]">
+          <select id="routeWallFilter"
+            class="w-full sm:w-auto bg-[#0B0F19] border border-gray-800 px-3 py-1.5 rounded-lg focus:outline-none focus:border-[#06B6D4]">
             <option value="all">All Locations</option>
             <option value="downtown">Downtown Depot</option>
             <option value="north">North Logistics</option>
             <option value="municipal">Municipal Depot</option>
           </select>
-          <select id="routeGradeFilter" class="w-full sm:w-auto bg-[#0B0F19] border border-gray-800 px-3 py-1.5 rounded-lg focus:outline-none focus:border-[#06B6D4]">
+          <select id="routeGradeFilter"
+            class="w-full sm:w-auto bg-[#0B0F19] border border-gray-800 px-3 py-1.5 rounded-lg focus:outline-none focus:border-[#06B6D4]">
             <option value="all">All Types</option>
             <option value="DC Fast">DC Fast Charger</option>
             <option value="Level 2">Level 2 AC</option>
@@ -392,6 +638,42 @@
             <h4 class="text-sm font-heading">Charger #02</h4>
             <p class="text-xs text-[#9CA3AF]">Status: In-Use. Level 2 AC smart charging plug J1772.</p>
           </div>
+          <!-- Route 3 -->
+          <div class="glass-panel p-5 rounded-2xl space-y-3" data-wall="municipal" data-grade="Level 2">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] bg-yellow-500/20 text-[#F59E0B] px-2 py-0.5 rounded">Municipal Depot</span>
+              <span class="text-xs font-heading text-[#F59E0B]">Level 2</span>
+            </div>
+            <h4 class="text-sm font-heading">Charger #03</h4>
+            <p class="text-xs text-[#9CA3AF]">Status: Idle. Type 2 AC connector for depot cars.</p>
+          </div>
+          <!-- Route 4 -->
+          <div class="glass-panel p-5 rounded-2xl space-y-3" data-wall="downtown" data-grade="DC Fast">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] bg-[#10B981]/20 text-[#10B981] px-2 py-0.5 rounded">Downtown Depot</span>
+              <span class="text-xs font-heading text-[#F59E0B]">DC Fast</span>
+            </div>
+            <h4 class="text-sm font-heading">Charger #04</h4>
+            <p class="text-xs text-[#9CA3AF]">Status: In-Use. High-power DC Fast CCS charging terminal.</p>
+          </div>
+          <!-- Route 5 -->
+          <div class="glass-panel p-5 rounded-2xl space-y-3" data-wall="north" data-grade="DC Fast">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] bg-[#06B6D4]/20 text-[#06B6D4] px-2 py-0.5 rounded">North Logistics</span>
+              <span class="text-xs font-heading text-[#F59E0B]">DC Fast</span>
+            </div>
+            <h4 class="text-sm font-heading">Charger #05</h4>
+            <p class="text-xs text-[#9CA3AF]">Status: Offline. Safety check required due to connector wear.</p>
+          </div>
+          <!-- Route 6 -->
+          <div class="glass-panel p-5 rounded-2xl space-y-3" data-wall="north" data-grade="Level 2">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] bg-[#06B6D4]/20 text-[#06B6D4] px-2 py-0.5 rounded">North Logistics</span>
+              <span class="text-xs font-heading text-[#F59E0B]">Level 2</span>
+            </div>
+            <h4 class="text-sm font-heading">Charger #06</h4>
+            <p class="text-xs text-[#9CA3AF]">Status: Online. Smart Level 2 J1772 connector.</p>
+          </div>
         </div>
       </div>
 
@@ -404,17 +686,72 @@
 
         <div class="glass-panel p-6 rounded-2xl space-y-4">
           <h4 class="text-sm font-heading">Scheduled Charging Slots</h4>
-          <div class="p-4 bg-[#0B0F19]/60 border border-gray-800 rounded-xl flex flex-col sm:flex-row gap-3 justify-between items-start sm:items-center">
+          <div
+            class="p-4 bg-[#0B0F19]/60 border border-gray-800 rounded-xl flex flex-col sm:flex-row gap-3 justify-between items-start sm:items-center mb-4">
             <div class="flex items-start sm:items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-[#10B981]/20 flex items-center justify-center text-[#10B981] shrink-0 mt-0.5 sm:mt-0">
+              <div
+                class="w-10 h-10 rounded-lg bg-[#10B981]/20 flex items-center justify-center text-[#10B981] shrink-0 mt-0.5 sm:mt-0">
                 <i class="fa-solid fa-clock"></i>
               </div>
               <div>
                 <h5 class="text-xs font-heading">Off-Peak Night Charging Window</h5>
-                <p class="text-[10px] text-[#9CA3AF] mt-0.5">Scheduled for June 26, 2026 • 22:00 - 06:00 (Automatic load capping active)</p>
+                <p class="text-[10px] text-[#9CA3AF] mt-0.5">Scheduled for June 26, 2026 • 22:00 - 06:00 (Automatic load
+                  capping active)</p>
               </div>
             </div>
-            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded uppercase font-heading shrink-0">Confirmed</span>
+            <span
+              class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded uppercase font-heading shrink-0">Confirmed</span>
+          </div>
+
+          <div
+            class="p-4 bg-[#0B0F19]/60 border border-gray-800 rounded-xl flex flex-col sm:flex-row gap-3 justify-between items-start sm:items-center mb-4">
+            <div class="flex items-start sm:items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-lg bg-[#06B6D4]/20 flex items-center justify-center text-[#06B6D4] shrink-0 mt-0.5 sm:mt-0">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div>
+                <h5 class="text-xs font-heading">Mid-Day Solar Capture Peak Capping</h5>
+                <p class="text-[10px] text-[#9CA3AF] mt-0.5">Scheduled for June 27, 2026 • 11:30 - 14:00 (Grid load
+                  capacity maximized for solar feed-in)</p>
+              </div>
+            </div>
+            <span
+              class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded uppercase font-heading shrink-0">Confirmed</span>
+          </div>
+
+          <!-- Schedule Maker Form inside card -->
+          <div class="border-t border-gray-800 pt-6">
+            <h4 class="text-sm font-heading mb-4">Request Scheduled Charging Window</h4>
+            <form onsubmit="event.preventDefault(); alert('Scheduled window request submitted successfully!');"
+              class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div>
+                <label class="block text-[10px] uppercase text-[#9CA3AF] mb-1">Target Charger / Depot</label>
+                <select class="w-full px-3 py-2 bg-[#0B0F19] border border-gray-800 rounded-lg text-xs text-white">
+                  <option>Charger #01 (Downtown)</option>
+                  <option>Charger #02 (North)</option>
+                  <option>Charger #03 (Municipal)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase text-[#9CA3AF] mb-1">Date</label>
+                <input type="date" required
+                  class="w-full px-3 py-2 bg-[#0B0F19] border border-gray-800 rounded-lg text-xs text-white">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase text-[#9CA3AF] mb-1">Time Block</label>
+                <select class="w-full px-3 py-2 bg-[#0B0F19] border border-gray-800 rounded-lg text-xs text-white">
+                  <option>00:00 - 04:00 (Super Off-Peak)</option>
+                  <option>12:00 - 16:00 (Solar Peak)</option>
+                  <option>18:00 - 22:00 (Utility High-Peak)</option>
+                </select>
+              </div>
+              <div class="flex items-end">
+                <button type="submit"
+                  class="w-full py-2.5 rounded-lg bg-[#10B981] hover:bg-[#10B981]/90 text-white font-medium text-xs">Request
+                  Slot</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -426,11 +763,66 @@
           <p class="text-xs text-[#9CA3AF]">Manage active driver RFID authorization profiles.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full min-w-0">
-          <div class="glass-panel p-6 rounded-2xl space-y-4 min-w-0">
-            <h4 class="text-sm font-heading">Driver RFID Key Batch #01</h4>
-            <p class="text-xs text-[#9CA3AF]">45 active keys issued to logistics drivers, linked directly to telemetry profiles.</p>
-            <button onclick="alert('Keys database portal loading...');" class="w-full py-2 rounded-lg bg-[#10B981] text-white text-xs font-medium">Manage Keys</button>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full min-w-0">
+          <div class="lg:col-span-1 glass-panel p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+            <div>
+              <h4 class="text-sm font-heading">Driver RFID Key Overview</h4>
+              <p class="text-xs text-[#9CA3AF] mt-2">Currently managing **48 active RFID keys** linked to regional
+                logistics division sub-accounts.</p>
+              <div class="bg-[#0B0F19]/40 border border-gray-900 rounded-xl p-4 space-y-2 mt-4 text-xs">
+                <div class="flex justify-between"><span>Active Keys:</span><span
+                    class="text-emerald-400 font-medium">45</span></div>
+                <div class="flex justify-between"><span>Pending Sync:</span><span
+                    class="text-yellow-500 font-medium">2</span></div>
+                <div class="flex justify-between"><span>Suspended:</span><span class="text-red-500 font-medium">1</span>
+                </div>
+              </div>
+            </div>
+            <button onclick="alert('Key registry sync started...');"
+              class="w-full py-2.5 rounded-xl bg-[#10B981] text-white text-xs font-medium mt-4">Sync Keys
+              Database</button>
+          </div>
+
+          <div class="lg:col-span-2 glass-panel p-6 rounded-2xl space-y-4">
+            <h4 class="text-sm font-heading">Recently Active Drivers</h4>
+            <div class="table-responsive">
+              <table class="table table-hover mb-0 text-xs">
+                <thead>
+                  <tr class="border-b border-gray-800 text-[#9CA3AF]">
+                    <th class="py-2.5">Driver</th>
+                    <th class="py-2.5">Key UID</th>
+                    <th class="py-2.5">Last Used</th>
+                    <th class="py-2.5 text-right">Status</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-900">
+                  <tr>
+                    <td class="py-2.5 font-medium">Elena Rostova</td>
+                    <td class="py-2.5 font-mono">RFID-9042A</td>
+                    <td class="py-2.5 text-gray-500">10 mins ago (Charger #01)</td>
+                    <td class="py-2.5 text-right text-emerald-400">Active</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 font-medium">Marcus Vance</td>
+                    <td class="py-2.5 font-mono">RFID-1025B</td>
+                    <td class="py-2.5 text-gray-500">2 hours ago (Charger #04)</td>
+                    <td class="py-2.5 text-right text-emerald-400">Active</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 font-medium">Sarah Jenkins</td>
+                    <td class="py-2.5 font-mono">RFID-4089C</td>
+                    <td class="py-2.5 text-gray-500">Yesterday (Charger #02)</td>
+                    <td class="py-2.5 text-right text-emerald-400">Active</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 font-medium">John Doe</td>
+                    <td class="py-2.5 font-mono">RFID-7821X</td>
+                    <td class="py-2.5 text-gray-500">June 12, 2026</td>
+                    <td class="py-2.5 text-right text-red-500">Suspended</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -442,15 +834,70 @@
           <p class="text-xs text-[#9CA3AF]">Track commercial electricity billing plans and sub-meter splits.</p>
         </div>
 
-        <div class="glass-panel p-6 rounded-2xl space-y-4">
-          <div class="flex justify-between items-center border-b border-gray-800 pb-4">
-            <div>
-              <h4 class="text-sm font-heading">Time-of-Use Utility Tariff Plan</h4>
-              <p class="text-[10px] text-[#9CA3AF]">Active status • Peak hours ($0.24/kWh) • Off-peak hours ($0.12/kWh)</p>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full min-w-0">
+          <div class="lg:col-span-4 glass-panel p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <h4 class="text-sm font-heading">Utility Tariff Plan</h4>
+              <div class="p-3 bg-[#0B0F19]/40 border border-gray-900 rounded-xl space-y-3 text-xs">
+                <div>
+                  <span class="text-[#9CA3AF] text-[9px] uppercase">Plan Name</span>
+                  <p class="font-heading">TOU Commercial Tier 2</p>
+                </div>
+                <div class="flex justify-between">
+                  <div>
+                    <span class="text-[#9CA3AF] text-[9px] uppercase">Off-Peak Rate</span>
+                    <p class="text-emerald-400 font-heading">$0.12 / kWh</p>
+                  </div>
+                  <div>
+                    <span class="text-[#9CA3AF] text-[9px] uppercase">On-Peak Rate</span>
+                    <p class="text-red-400 font-heading">$0.24 / kWh</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <span class="text-xs font-heading text-[#06B6D4]">$0.16 / kWh average</span>
+            <button onclick="alert('Configuration portal triggered...');"
+              class="w-full py-2.5 rounded-xl border border-gray-850 hover:bg-gray-800 transition-all text-xs font-medium mt-4">Change
+              Utility Plan</button>
           </div>
-          <button onclick="alert('Billing details loading...');" class="px-4 py-2 rounded-xl border border-gray-800 text-xs hover:bg-gray-800 transition-colors">Configure Billing Shares</button>
+
+          <div class="lg:col-span-8 glass-panel p-6 rounded-2xl space-y-4">
+            <h4 class="text-sm font-heading">Recent Monthly Invoices</h4>
+            <div class="table-responsive">
+              <table class="table table-hover mb-0 text-xs">
+                <thead>
+                  <tr class="border-b border-gray-800 text-[#9CA3AF]">
+                    <th class="py-2.5">Billing Period</th>
+                    <th class="py-2.5 text-center">Energy Consumed</th>
+                    <th class="py-2.5 text-right">Total Charge</th>
+                    <th class="py-2.5 text-right">Status</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-900">
+                  <tr>
+                    <td class="py-3 font-medium">May 1 - May 31, 2026</td>
+                    <td class="py-3 text-center">24,510 kWh</td>
+                    <td class="py-3 text-right font-heading text-emerald-400">$3,420.50</td>
+                    <td class="py-3 text-right"><span
+                        class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 font-medium">Apr 1 - Apr 30, 2026</td>
+                    <td class="py-3 text-center">22,890 kWh</td>
+                    <td class="py-3 text-right font-heading text-emerald-400">$3,180.20</td>
+                    <td class="py-3 text-right"><span
+                        class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 font-medium">Mar 1 - Mar 31, 2026</td>
+                    <td class="py-3 text-center">21,450 kWh</td>
+                    <td class="py-3 text-right font-heading text-emerald-400">$2,980.00</td>
+                    <td class="py-3 text-right"><span
+                        class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">Paid</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -461,16 +908,66 @@
           <p class="text-xs text-[#9CA3AF]">Update depot preferences and vehicle load parameters.</p>
         </div>
 
-        <div class="glass-panel p-6 rounded-2xl space-y-4">
-          <div>
-            <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Primary Fleet Vehicle Type</label>
-            <select class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
-              <option>Delivery Vans (CCS)</option>
-              <option>Heavy-Duty Trucks (MCS)</option>
-              <option>Public Buses (Pantograph)</option>
-            </select>
-          </div>
-          <button onclick="alert('Depot configurations updated successfully!');" class="w-full py-2.5 rounded-xl bg-[#10B981] text-white text-xs font-medium">Save Configurations</button>
+        <div class="glass-panel p-6 rounded-2xl">
+          <form onsubmit="event.preventDefault(); alert('Depot configurations updated successfully!');"
+            class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Depot Identifier
+                  Name</label>
+                <input type="text" value="Colorado Charging Depot #01"
+                  class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Primary Fleet Vehicle
+                  Type</label>
+                <select
+                  class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+                  <option>Delivery Vans (CCS)</option>
+                  <option>Heavy-Duty Trucks (MCS)</option>
+                  <option>Public Buses (Pantograph)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Maximum Grid Power Cap
+                  (kW)</label>
+                <input type="number" value="250"
+                  class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Emergency Operations
+                  Contact Email</label>
+                <input type="email" value="operations@evfleetcharging.com"
+                  class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Depot Address Zip
+                  Code</label>
+                <input type="text" value="80202"
+                  class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-gray-800">
+              <label class="flex items-center gap-2 cursor-pointer text-xs text-[#9CA3AF]">
+                <input type="checkbox" checked
+                  class="rounded bg-[#0B0F19] border-gray-800 text-[#10B981] focus:ring-0 cursor-pointer">
+                <span>Notify manager on peak electricity tariff shifts</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer text-xs text-[#9CA3AF]">
+                <input type="checkbox" checked
+                  class="rounded bg-[#0B0F19] border-gray-800 text-[#10B981] focus:ring-0 cursor-pointer">
+                <span>Auto-cap charger draw when grid load exceeds 90% threshold</span>
+              </label>
+            </div>
+
+            <button type="submit"
+              class="w-full py-2.5 rounded-xl bg-[#10B981] hover:bg-[#10B981]/90 transition-all text-white text-xs font-medium mt-4">Save
+              Configurations</button>
+          </form>
         </div>
       </div>
 
@@ -489,12 +986,14 @@
           <form class="space-y-4" id="logClimbForm" onsubmit="submitClimbLog(event)">
             <div>
               <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Charger ID</label>
-              <input type="text" id="logRouteName" required placeholder="eg. Charger #05" class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+              <input type="text" id="logRouteName" required placeholder="eg. Charger #05"
+                class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
             </div>
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Connector</label>
-                <select id="logRouteGrade" class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+                <select id="logRouteGrade"
+                  class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
                   <option value="CCS">CCS</option>
                   <option value="J1772">J1772</option>
                   <option value="Type 2 AC">Type 2 AC</option>
@@ -502,10 +1001,12 @@
               </div>
               <div>
                 <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Duration (Mins)</label>
-                <input type="number" id="logRouteAttempts" required min="1" max="1440" value="45" class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+                <input type="number" id="logRouteAttempts" required min="1" max="1440" value="45"
+                  class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
               </div>
             </div>
-            <button type="submit" class="w-full py-3 rounded-xl bg-[#10B981] hover:bg-[#10B981]/90 transition-all font-medium text-xs uppercase tracking-wider mt-4">
+            <button type="submit"
+              class="w-full py-3 rounded-xl bg-[#10B981] hover:bg-[#10B981]/90 transition-all font-medium text-xs uppercase tracking-wider mt-4">
               Submit Session Log
             </button>
           </form>
@@ -521,4 +1022,5 @@
   <script src="js/main.js"></script>
   <script src="js/dashboard.js"></script>
 </body>
+
 </html>

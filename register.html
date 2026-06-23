@@ -67,9 +67,9 @@
       
       <!-- Logo Header -->
       <div class="text-center space-y-2">
-        <a class="flex items-center justify-center gap-2 text-[#F3F4F6] text-2xl tracking-wider font-heading" href="index.html">
+        <a class="brand-logo flex items-center justify-center gap-2 tracking-wider" href="index.html">
           <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
-          <span>EV <span class="text-[#10B981] font-medium">FLEET</span></span>
+          <span>EV <span class="brand-green">FLEET</span></span>
         </a>
         <p class="text-xs text-[#9CA3AF]">Create your fleet manager account</p>
       </div>
@@ -88,7 +88,7 @@
           <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Password</label>
           <div class="relative">
             <input id="reg-password" type="password" required autocomplete="new-password" class="w-full px-4 py-2.5 rounded-xl bg-[#0B0F19]/60 border border-gray-800 text-white text-xs placeholder-gray-600 focus:outline-none neon-focus transition-all pr-10">
-            <button type="button" onclick="toggleRegPasswordVisibility('reg-password', 'reg-password-eye')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors text-xs">
+            <button type="button" onclick="toggleRegPasswordVisibility('reg-password', 'reg-password-eye')" class="password-toggle-btn absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors text-xs">
               <i id="reg-password-eye" class="fa-regular fa-eye"></i>
             </button>
           </div>
@@ -97,16 +97,16 @@
           <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Confirm Password</label>
           <div class="relative">
             <input id="reg-confirm-password" type="password" required autocomplete="new-password" class="w-full px-4 py-2.5 rounded-xl bg-[#0B0F19]/60 border border-gray-800 text-white text-xs placeholder-gray-600 focus:outline-none neon-focus transition-all pr-10">
-            <button type="button" onclick="toggleRegPasswordVisibility('reg-confirm-password', 'reg-confirm-password-eye')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors text-xs">
+            <button type="button" onclick="toggleRegPasswordVisibility('reg-confirm-password', 'reg-confirm-password-eye')" class="password-toggle-btn absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors text-xs">
               <i id="reg-confirm-password-eye" class="fa-regular fa-eye"></i>
             </button>
           </div>
         </div>
  
-        <div class="flex items-start gap-2.5 text-[10px] text-[#9CA3AF] leading-relaxed">
+        <div class="auth-terms-container flex items-start gap-2.5 text-[10px] text-[#9CA3AF] leading-relaxed">
           <input type="checkbox" required id="terms-checkbox" class="mt-0.5 rounded bg-[#0B0F19] border-gray-800 text-[#10B981] focus:ring-0 cursor-pointer">
           <label for="terms-checkbox" class="cursor-pointer select-none">
-            I agree to the <a href="#" class="text-[#06B6D4] hover:underline">Grid Services Agreement</a> and <a href="#" class="text-[#06B6D4] hover:underline">Terms of Service</a>.
+             <a href="#" class="text-[#06B6D4] hover:underline">I agree to the Grid Services Agreement</a> and <a href="#" class="text-[#06B6D4] hover:underline">Terms of Service</a>.
           </label>
         </div>
  

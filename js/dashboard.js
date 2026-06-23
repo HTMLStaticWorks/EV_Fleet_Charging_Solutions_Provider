@@ -45,6 +45,11 @@ function showSection(sectionId) {
     btn.classList.remove('active');
   });
 
+  // Remove active styling from mobile menu buttons
+  document.querySelectorAll('.mobile-nav-link').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
   // Show active panel
   const targetPanel = document.getElementById('panel-' + sectionId);
   if (targetPanel) {
@@ -55,6 +60,12 @@ function showSection(sectionId) {
   const targetBtn = document.getElementById('nav-' + sectionId);
   if (targetBtn) {
     targetBtn.classList.add('active');
+  }
+
+  // Highlight active mobile menu button
+  const targetMobileBtn = document.getElementById('mobile-nav-' + sectionId);
+  if (targetMobileBtn) {
+    targetMobileBtn.classList.add('active');
   }
 }
 

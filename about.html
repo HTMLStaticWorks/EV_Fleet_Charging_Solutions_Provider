@@ -42,9 +42,9 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top glass-navbar py-3">
     <div class="container-fluid px-4 max-w-7xl mx-auto flex justify-between items-center">
-      <a class="navbar-brand flex items-center gap-2 text-[#F3F4F6] text-xl tracking-wider font-heading" href="index.html">
+      <a class="brand-logo flex items-center gap-2" href="index.html">
         <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
-        <span>EV <span class="text-[#10B981] font-medium">FLEET</span></span>
+        <span>EV <span class="brand-green">FLEET</span></span>
       </a>
 
       <!-- Desktop Links -->
@@ -315,76 +315,99 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-[#0B0F19] border-t border-gray-900 pt-16 pb-12 text-sm text-[#9CA3AF]">
-    <div class="container max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+  <!-- Premium Footer -->
+  <footer class="premium-footer pt-16 pb-12 text-sm text-[#9CA3AF]">
+    <!-- Background subtle gradient orbs -->
+    <div class="bg-gradient-orb orb-primary opacity-[0.04] -bottom-16 -left-16 w-80 h-80"></div>
+    <div class="bg-gradient-orb orb-secondary opacity-[0.04] -top-16 -right-16 w-80 h-80"></div>
+
+    <div class="container max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 relative z-10">
       <!-- Brand column -->
       <div class="md:col-span-4 space-y-4">
-        <a class="flex items-center gap-2 text-[#F3F4F6] text-xl font-heading tracking-wider" href="index.html">
+        <a class="brand-logo flex items-center gap-2" href="index.html">
           <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
-          <span>EV <span class="text-[#10B981] font-medium">FLEET</span></span>
+          <span>EV <span class="brand-green">FLEET</span></span>
         </a>
         <p class="text-xs leading-relaxed text-[#9CA3AF] max-w-sm">
           EV Fleet delivers hardware, cloud-based load management, and fleet portal tracking to power zero-emission logistics and transit fleets.
         </p>
         <div class="flex gap-3 pt-2">
           <a href="#" class="social-icon-btn instagram" title="Instagram">
-            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-instagram text-center"></i>
           </a>
           <a href="#" class="social-icon-btn youtube" title="YouTube">
-            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-youtube text-center"></i>
           </a>
           <a href="#" class="social-icon-btn facebook" title="Facebook">
-            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-facebook-f text-center"></i>
           </a>
           <a href="#" class="social-icon-btn tiktok" title="TikTok">
-            <i class="fa-brands fa-tiktok"></i>
+            <i class="fa-brands fa-tiktok text-center"></i>
           </a>
         </div>
       </div>
 
       <!-- Links Column 1: Explore -->
       <div class="md:col-span-2 space-y-3">
-        <h5 class="text-[#F3F4F6] font-heading font-medium text-xs uppercase tracking-widest">Explore</h5>
-        <ul class="space-y-2 text-xs">
-          <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
-          <li><a href="home2.html" class="hover:text-white transition-colors">Home 2</a></li>
-          <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
-          <li><a href="programs.html" class="hover:text-white transition-colors">Solutions</a></li>
-          <li><a href="coaching.html" class="hover:text-white transition-colors">Consulting</a></li>
-          <li><a href="community.html" class="hover:text-white transition-colors">Partnerships</a></li>
+        <h5 class="footer-header">Explore</h5>
+        <ul class="footer-links text-xs">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="programs.html">Solutions</a></li>
+          <li><a href="coaching.html">Consulting</a></li>
+          <li><a href="community.html">Partnerships</a></li>
         </ul>
       </div>
 
       <!-- Links Column 2: Fleet Portal -->
       <div class="md:col-span-2 space-y-3">
-        <h5 class="text-[#F3F4F6] font-heading font-medium text-xs uppercase tracking-widest">Fleet Portal</h5>
-        <ul class="space-y-2 text-xs">
-          <li><a href="dashboard.html" class="hover:text-white transition-colors">Dashboard</a></li>
-          <li><a href="login.html" class="hover:text-white transition-colors">Log In</a></li>
-          <li><a href="register.html" class="hover:text-white transition-colors">Sign Up</a></li>
+        <h5 class="footer-header">Fleet Portal</h5>
+        <ul class="footer-links text-xs">
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="login.html">Log In</a></li>
+          <li><a href="register.html">Sign Up</a></li>
         </ul>
       </div>
 
       <!-- Links Column 3: Contact & Info -->
-      <div class="md:col-span-4 space-y-3">
-        <h5 class="text-[#F3F4F6] font-heading font-medium text-xs uppercase tracking-widest">Headquarters</h5>
-        <p class="text-xs leading-relaxed text-[#9CA3AF]">
-          100 Energy Way, Suite 400,<br>Denver, CO 80202
-        </p>
-        <p class="text-xs text-[#9CA3AF] pt-1">
-          <i class="fa-solid fa-envelope mr-1.5 text-gray-500"></i>sales@evfleetcharging.com<br>
-          <i class="fa-solid fa-phone mr-1.5 text-gray-500"></i>(800) 555-0122
-        </p>
+      <div class="md:col-span-4 space-y-4">
+        <h5 class="footer-header">Headquarters</h5>
+        <ul class="space-y-3 text-xs">
+          <li class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#06B6D4]/10 border border-[#06B6D4]/20 flex items-center justify-center text-[#06B6D4] shrink-0 mt-0.5">
+              <i class="fa-solid fa-location-dot text-xs text-center"></i>
+            </div>
+            <span class="leading-relaxed text-[#D1D5DB]">
+              100 Energy Way, Suite 400,<br>Denver, CO 80202
+            </span>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#10B981]/10 border border-[#10B981]/20 flex items-center justify-center text-[#10B981] shrink-0">
+              <i class="fa-solid fa-envelope text-xs text-center"></i>
+            </div>
+            <a href="mailto:sales@evfleetcharging.com" class="text-[#D1D5DB] hover:text-white transition-colors">
+              sales@evfleetcharging.com
+            </a>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#F59E0B]/10 border border-[#F59E0B]/20 flex items-center justify-center text-[#F59E0B] shrink-0">
+              <i class="fa-solid fa-phone text-xs text-center"></i>
+            </div>
+            <a href="tel:8005550122" class="text-[#D1D5DB] hover:text-white transition-colors">
+              (800) 555-0122
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
 
     <!-- Bottom bar -->
-    <div class="container max-w-7xl mx-auto px-4 pt-6 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+    <div class="container max-w-7xl mx-auto px-4 pt-6 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs relative z-10">
       <p class="text-[#6B7280]">&copy; 2026 EV Fleet Charging Solutions. Powering Zero-Emission Transit.</p>
-      <div class="flex gap-4">
-        <a href="#" class="hover:text-[#F3F4F6] text-gray-500 transition-colors">Privacy Policy</a>
-        <a href="#" class="hover:text-[#F3F4F6] text-gray-500 transition-colors">Service Agreement</a>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-[#F3F4F6] text-gray-500 transition-colors text-decoration-none">Privacy Policy</a>
+        <a href="#" class="hover:text-[#F3F4F6] text-gray-500 transition-colors text-decoration-none">Service Agreement</a>
       </div>
     </div>
   </footer>
