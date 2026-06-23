@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulting - EV Fleet</title>
+  <meta name="description" content="Train with world-class engineers at EV Fleet. Customized infrastructure roadmaps, load capacity assessments, and targeted grid interconnection support.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            darkbg: '#0B0F19',
+            cardbg1: '#111827',
+            cardbg2: '#1F2937',
+            primary: '#10B981',
+            secondary: '#06B6D4',
+            accent: '#F59E0B',
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-[#0B0F19] text-[#F3F4F6]">
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top glass-navbar py-3">
+    <div class="container-fluid px-4 max-w-7xl mx-auto flex justify-between items-center">
+      <a class="navbar-brand flex items-center gap-2 text-[#F3F4F6] text-xl tracking-wider font-heading" href="index.html">
+        <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
+        <span>EV <span class="text-[#10B981] font-medium">FLEET</span></span>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8">
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="index.html">Home</a>
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="home2.html">Home 2</a>
+        
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="about.html">About</a>
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="programs.html">Solutions</a>
+
+        <a class="text-[#F3F4F6] hover:text-[#06B6D4] transition-colors" href="coaching.html">Consulting</a>
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="community.html">Partnerships</a>
+
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="contact.html">Contact</a>
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="dashboard.html">Dashboard</a>
+      </div>
+
+      <div class="hidden lg:flex items-center gap-4">
+        <button id="rtl-toggle" class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors" title="Toggle RTL">
+          <i id="rtl-icon" class="fa-solid fa-right-left text-lg text-gray-300"></i>
+        </button>
+        <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors" title="Toggle Theme">
+          <i id="theme-icon" class="fa-regular fa-sun text-[#F59E0B] text-lg"></i>
+        </button>
+        <a href="register.html" class="px-5 py-2 rounded-full border border-[#10B981] bg-[#10B981]/10 text-[#F3F4F6] hover:bg-[#10B981] transition-all duration-300 font-medium text-sm">
+          Sign Up
+        </a>
+      </div>
+
+      <button class="lg:hidden text-[#F3F4F6] text-xl" id="mobile-menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div id="mobile-menu" class="hidden fixed top-[70px] left-0 w-full glass-panel py-6 px-4 z-40 lg:hidden flex flex-col gap-4">
+    <a class="text-lg text-[#D1D5DB]" href="index.html">Home</a>
+    <a class="text-lg text-[#D1D5DB]" href="home2.html">Home 2</a>
+    <a class="text-lg text-[#D1D5DB]" href="about.html">About</a>
+    <a class="text-lg text-[#D1D5DB]" href="programs.html">Solutions</a>
+    <a class="text-lg text-[#F3F4F6]" href="coaching.html">Consulting</a>
+    <a class="text-lg text-[#D1D5DB]" href="community.html">Partnerships</a>
+
+    <a class="text-lg text-[#D1D5DB]" href="contact.html">Contact</a>
+    <a class="text-lg text-[#D1D5DB]" href="dashboard.html">Dashboard</a>
+    <div class="h-[1px] bg-gray-800 my-2"></div>
+    <div class="flex justify-center items-center gap-4 py-2">
+      <button id="rtl-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors">
+        <i class="fa-solid fa-right-left text-lg text-gray-300"></i>
+      </button>
+      <button id="theme-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors">
+        <i id="theme-icon-mobile" class="fa-regular fa-sun text-[#F59E0B] text-lg"></i>
+      </button>
+    </div>
+    <a href="register.html" class="w-full text-center py-3 rounded-xl bg-[#10B981] text-white hover:bg-opacity-95 transition-all">
+      Sign Up
+    </a>
+  </div>
+
+  <!-- Page Header / Hero Section -->
+  <header class="pt-32 pb-20 relative overflow-hidden flex items-center">
+    <div class="bg-gradient-orb orb-secondary"></div>
+    <div class="container max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center relative z-10">
+      <div class="lg:col-span-7 space-y-6 text-left" data-aos="fade-right">
+        <span class="text-xs uppercase tracking-widest text-[#06B6D4] font-heading">Seamless Power Transition</span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading leading-tight">
+          Fleet Consulting <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-[#10B981] text-glow-secondary">& Design Services</span>
+        </h1>
+        <p class="text-[#D1D5DB] text-lg font-light leading-relaxed max-w-xl">
+          Accelerate your transition to zero emissions, optimize depot energy load, and navigate local grid limitations with our certified advisory engineers.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <a href="#consultants-section" class="px-8 py-3 rounded-full bg-[#10B981] text-white glow-btn-primary hover:bg-[#10B981]/90 transition-all font-medium text-center w-full sm:w-auto">
+            Meet Our Consultants
+          </a>
+        </div>
+      </div>
+      <div class="lg:col-span-5 relative" data-aos="fade-left">
+        <div class="h-[300px] sm:h-[400px] rounded-3xl overflow-hidden border border-gray-800 shadow-2xl relative">
+          <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80" alt="EV infrastructure client consulting session" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0B0F19]/60 to-transparent opacity-50"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Coach Profiles -->
+  <section id="consultants-section" class="container max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-2xl md:text-3xl font-heading">Meet Our World-Class Consultants</h2>
+      <p class="text-[#9CA3AF] text-sm max-w-md mx-auto mt-2">Grid planners, electrical engineers, and IoT programmers ready to coordinate your depot electrification plan.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Profile 1 -->
+      <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="100">
+        <div class="h-64 relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Consultant Sarah" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6 space-y-3">
+          <span class="text-xs text-[#06B6D4] font-heading uppercase tracking-wider">Grid Interconnection & Sub-stations</span>
+          <h3 class="text-xl font-heading">Sarah Jenkins</h3>
+          <p class="text-xs text-[#9CA3AF]">12+ years power engineering. Specialist in commercial sub-panel routing, grid applications, and transformer planning.</p>
+        </div>
+      </div>
+
+      <!-- Profile 2 -->
+      <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="200">
+        <div class="h-64 relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Consultant Dan" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6 space-y-3">
+          <span class="text-xs text-[#10B981] font-heading uppercase tracking-wider">Municipal Fleet Electrification</span>
+          <h3 class="text-xl font-heading">Dan Vance</h3>
+          <p class="text-xs text-[#9CA3AF]">Former municipal transit planner. Expert in federal grant compliance (NEVI), bus loop layouts, and utility negotiations.</p>
+        </div>
+      </div>
+
+      <!-- Profile 3 -->
+      <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="300">
+        <div class="h-64 relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" alt="Consultant Liam" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6 space-y-3">
+          <span class="text-xs text-[#F59E0B] font-heading uppercase tracking-wider">IoT Software & Load Management</span>
+          <h3 class="text-xl font-heading">Liam Reynolds</h3>
+          <p class="text-xs text-[#9CA3AF]">Certified systems integrations engineer. Focuses on OCPP load scheduling scripts, API linkages, and sub-metering configurations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Roadmap -->
+  <section class="py-24 bg-[#111827]/40 border-y border-gray-800">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="text-center space-y-3 mb-16" data-aos="fade-up">
+        <h2 class="text-2xl md:text-3xl font-heading">Electrification Lifecycle Roadmap</h2>
+        <p class="text-[#9CA3AF] text-sm max-w-md mx-auto">A structured four-phase engineering framework designed to secure power approvals and deploy chargers.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 relative items-stretch">
+        <!-- Phase 1 -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
+          data-aos="fade-up" data-aos-delay="100">
+          <div class="h-44 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://images.pexels.com/photos/7590967/pexels-photo-7590967.jpeg" alt="Initial Assessment Grid"
+              class="w-full h-full object-cover">
+            <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#10B981] text-white text-xs font-heading flex items-center justify-center shadow-lg">1</span>
+          </div>
+          <div class="p-5 space-y-2 flex-1">
+            <h4 class="text-base font-heading">Initial Grid Assessment</h4>
+            <p class="text-xs text-[#9CA3AF] leading-relaxed">Evaluate local substation power limits, daily fleet mileage, utility rates, and depot layout constraints.</p>
+          </div>
+        </div>
+        <!-- Phase 2 -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
+          data-aos="fade-up" data-aos-delay="200">
+          <div class="h-44 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://images.pexels.com/photos/9545909/pexels-photo-9545909.jpeg" alt="Depot Charging Blueprints"
+              class="w-full h-full object-cover">
+            <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#06B6D4] text-[#0B0F19] text-xs font-heading flex items-center justify-center shadow-lg">2</span>
+          </div>
+          <div class="p-5 space-y-2 flex-1">
+            <h4 class="text-base font-heading">Depot Charging Blueprints</h4>
+            <p class="text-xs text-[#9CA3AF] leading-relaxed">Receive comprehensive wiring blueprints, load balancing sub-panel schematics, and utility applications.</p>
+          </div>
+        </div>
+        <!-- Phase 3 -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
+          data-aos="fade-up" data-aos-delay="300">
+          <div class="h-44 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://images.pexels.com/photos/6676174/pexels-photo-6676174.jpeg" alt="Cloud Software Testing"
+              class="w-full h-full object-cover">
+            <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#F59E0B] text-[#0B0F19] text-xs font-heading flex items-center justify-center shadow-lg">3</span>
+          </div>
+          <div class="p-5 space-y-2 flex-1">
+            <h4 class="text-base font-heading">Cloud Software Testing</h4>
+            <p class="text-xs text-[#9CA3AF] leading-relaxed">Configure OCPP cloud portal connections, test RFID driver credentials, and optimize peak-shaving rules.</p>
+          </div>
+        </div>
+        <!-- Phase 4 -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
+          data-aos="fade-up" data-aos-delay="400">
+          <div class="h-44 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://images.pexels.com/photos/5383505/pexels-photo-5383505.jpeg" alt="Depot Commissioning"
+              class="w-full h-full object-cover">
+            <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-emerald-400 text-[#0B0F19] text-xs font-heading flex items-center justify-center shadow-lg">4</span>
+          </div>
+          <div class="p-5 space-y-2 flex-1">
+            <h4 class="text-base font-heading">Depot Commissioning</h4>
+            <p class="text-xs text-[#9CA3AF] leading-relaxed">Run test charging cycles across vehicles, verify dynamic load shedding, and launch live fleet dispatcher portal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gym Membership Section -->
+  <section class="py-24 bg-[#111827]/30 border-y border-gray-800" data-aos="fade-up">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="text-center space-y-3 mb-16">
+        <span class="text-xs uppercase tracking-widest text-[#06B6D4] font-heading">Support Plans</span>
+        <h2 class="text-3xl md:text-4xl font-heading">Fleet Consulting & Support Packages</h2>
+        <p class="text-[#9CA3AF] max-w-xl mx-auto text-sm">Select your management subscription tier. All packages integrate directly with the EV Fleet manager portal.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <!-- Pass 1 -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between hover:border-gray-700 transition-all">
+          <div class="space-y-4">
+            <h3 class="text-xl font-heading">Assessment Plan</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-3xl font-heading">$499</span>
+              <span class="text-xs text-[#9CA3AF]">/ one-time</span>
+            </div>
+            <p class="text-sm text-[#9CA3AF]">Comprehensive grid capacity audit, layout schematic design, and local utility application support.</p>
+            <div class="h-[1px] bg-gray-800 my-4"></div>
+            <ul class="space-y-2 text-sm text-[#D1D5DB]">
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Site Grid Audit Check</li>
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Sub-panel Schematic Design</li>
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Utility Application Filing</li>
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Hardware Brand Selection</li>
+              <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i>Continuous Smart Balancing</li>
+            </ul>
+          </div>
+          <a href="register.html" class="mt-8 w-full text-center py-3 rounded-full border border-[#10B981] bg-[#10B981]/10 text-[#F3F4F6] hover:bg-[#10B981] hover:text-white transition-all text-xs font-medium uppercase tracking-wider">
+            Get Assessment
+          </a>
+        </div>
+
+        <!-- Pass 2 -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between border-t-2 border-t-[#10B981] relative hover:border-gray-750 transition-all">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#10B981] text-white text-[10px] uppercase tracking-wider px-3 py-1 rounded-full whitespace-nowrap">Recommended</span>
+          <div class="space-y-4">
+            <h3 class="text-xl font-heading">Managed Deployment</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-3xl font-heading">$249</span>
+              <span class="text-xs text-[#9CA3AF]">/ month</span>
+            </div>
+            <p class="text-sm text-[#9CA3AF]">Ongoing smart load management, telemetry software access, and remote firmware support.</p>
+            <div class="h-[1px] bg-gray-800 my-4"></div>
+            <ul class="space-y-2 text-sm text-[#D1D5DB]">
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Continuous Smart Balancing</li>
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Active Driver RFID Keys (up to 50)</li>
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>OCPP Portal Dashboard Access</li>
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Carbon Offset & ESG Telemetry</li>
+              <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i>2-Hour Priority Callout Response</li>
+            </ul>
+          </div>
+          <a href="register.html" class="mt-8 w-full text-center py-3 rounded-full bg-[#10B981] text-white glow-btn-primary hover:bg-[#10B981]/90 transition-all text-xs font-medium uppercase tracking-wider">
+            Unlock Managed Deployment
+          </a>
+        </div>
+
+        <!-- Pass 3 -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between hover:border-gray-700 transition-all">
+          <div class="space-y-4">
+            <h3 class="text-xl font-heading">Enterprise Grid Support</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-3xl font-heading">$499</span>
+              <span class="text-xs text-[#9CA3AF]">/ month</span>
+            </div>
+            <p class="text-sm text-[#9CA3AF]">Comprehensive support package optimized for logistics hubs and public transit systems.</p>
+            <div class="h-[1px] bg-gray-800 my-4"></div>
+            <ul class="space-y-2 text-sm text-[#D1D5DB]">
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Unlimited managed terminals</li>
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Dedicated Account Manager Support</li>
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Priority 2-Hour Hardware Callout</li>
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Custom Fleet Telematics APIs</li>
+              <li><i class="fa-solid fa-check text-[#10B981] mr-2"></i>Automated Clean Fuel Credits</li>
+            </ul>
+          </div>
+          <a href="register.html" class="mt-8 w-full text-center py-3 rounded-full border border-[#10B981] bg-[#10B981]/10 text-[#F3F4F6] hover:bg-[#10B981] hover:text-white transition-all text-xs font-medium uppercase tracking-wider">
+            Unlock Enterprise Support
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section class="py-24 bg-[#0B0F19]">
+    <div class="container max-w-xl mx-auto px-4">
+      <div class="glass-panel p-8 rounded-3xl space-y-6" data-aos="zoom-in">
+        <div class="text-center space-y-2">
+          <h2 class="text-2xl font-heading">Schedule A Depot Consultation</h2>
+          <p class="text-xs text-[#9CA3AF]">Select your advisor and depot electrification goal. We will follow up via email within 24 hours.</p>
+        </div>
+        
+        <form class="space-y-4" onsubmit="event.preventDefault(); alert('Consultation successfully requested! Your advisor will contact you soon.');">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-[#9CA3AF] mb-1">Company & Fleet Representative</label>
+            <input type="text" required class="w-full px-4 py-2.5 rounded-xl bg-[#0B0F19] border border-gray-800 text-white text-sm focus:outline-none focus:border-[#06B6D4]">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-[#9CA3AF] mb-1">Select Advisor</label>
+            <select class="w-full px-4 py-2.5 rounded-xl bg-[#0B0F19] border border-gray-800 text-white text-sm focus:outline-none focus:border-[#06B6D4]">
+              <option>Sarah Jenkins (Grid Interconnection & Sub-stations)</option>
+              <option>Dan Vance (Municipal Fleet Electrification)</option>
+              <option>Liam Reynolds (IoT Software & Load Management)</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-[#9CA3AF] mb-1">Preferred Date</label>
+              <input type="date" required class="w-full px-4 py-2.5 rounded-xl bg-[#0B0F19] border border-gray-800 text-[#9CA3AF] text-sm focus:outline-none focus:border-[#06B6D4]">
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-[#9CA3AF] mb-1">Preferred Time</label>
+              <select class="w-full px-4 py-2.5 rounded-xl bg-[#0B0F19] border border-gray-800 text-white text-sm focus:outline-none focus:border-[#06B6D4]">
+                <option>Morning (08:00 - 12:00)</option>
+                <option>Afternoon (12:00 - 17:00)</option>
+                <option>Evening (17:00 - 21:00)</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-[#10B981] hover:bg-[#10B981]/90 transition-all font-medium text-sm">
+            Submit Consultation Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#0B0F19] border-t border-gray-900 pt-16 pb-12 text-sm text-[#9CA3AF]">
+    <div class="container max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+      <!-- Brand column -->
+      <div class="md:col-span-4 space-y-4">
+        <a class="flex items-center gap-2 text-[#F3F4F6] text-xl font-heading tracking-wider" href="index.html">
+          <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
+          <span>EV <span class="text-[#10B981] font-medium">FLEET</span></span>
+        </a>
+        <p class="text-xs leading-relaxed text-[#9CA3AF] max-w-sm">
+          EV Fleet delivers hardware, cloud-based load management, and fleet portal tracking to power zero-emission logistics and transit fleets.
+        </p>
+        <div class="flex gap-3 pt-2">
+          <a href="#" class="social-icon-btn instagram" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="social-icon-btn youtube" title="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="#" class="social-icon-btn facebook" title="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon-btn tiktok" title="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links Column 1: Explore -->
+      <div class="md:col-span-2 space-y-3">
+        <h5 class="text-[#F3F4F6] font-heading font-medium text-xs uppercase tracking-widest">Explore</h5>
+        <ul class="space-y-2 text-xs">
+          <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+          <li><a href="home2.html" class="hover:text-white transition-colors">Home 2</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+          <li><a href="programs.html" class="hover:text-white transition-colors">Solutions</a></li>
+          <li><a href="coaching.html" class="hover:text-white transition-colors">Consulting</a></li>
+          <li><a href="community.html" class="hover:text-white transition-colors">Partnerships</a></li>
+        </ul>
+      </div>
+
+      <!-- Links Column 2: Fleet Portal -->
+      <div class="md:col-span-2 space-y-3">
+        <h5 class="text-[#F3F4F6] font-heading font-medium text-xs uppercase tracking-widest">Fleet Portal</h5>
+        <ul class="space-y-2 text-xs">
+          <li><a href="dashboard.html" class="hover:text-white transition-colors">Dashboard</a></li>
+          <li><a href="login.html" class="hover:text-white transition-colors">Log In</a></li>
+          <li><a href="register.html" class="hover:text-white transition-colors">Sign Up</a></li>
+        </ul>
+      </div>
+
+      <!-- Links Column 3: Contact & Info -->
+      <div class="md:col-span-4 space-y-3">
+        <h5 class="text-[#F3F4F6] font-heading font-medium text-xs uppercase tracking-widest">Headquarters</h5>
+        <p class="text-xs leading-relaxed text-[#9CA3AF]">
+          100 Energy Way, Suite 400,<br>Denver, CO 80202
+        </p>
+        <p class="text-xs text-[#9CA3AF] pt-1">
+          <i class="fa-solid fa-envelope mr-1.5 text-gray-500"></i>sales@evfleetcharging.com<br>
+          <i class="fa-solid fa-phone mr-1.5 text-gray-500"></i>(800) 555-0122
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="container max-w-7xl mx-auto px-4 pt-6 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+      <p class="text-[#6B7280]">&copy; 2026 EV Fleet Charging Solutions. Powering Zero-Emission Transit.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-[#F3F4F6] text-gray-500 transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-[#F3F4F6] text-gray-500 transition-colors">Service Agreement</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Button (Back to Top) -->
+  <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">
+    <i class="fa-solid fa-angle-up text-lg"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({ duration: 800, once: true });
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>

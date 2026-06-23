@@ -1,0 +1,812 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500&family=Space+Grotesk:wght@400;500;550&display=swap');
+
+/* CSS Variables */
+:root {
+  --bg-color: #0B0F19;
+  --card-bg: rgba(17, 24, 39, 0.7);
+  --card-bg-solid: #111827;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --primary: #10B981; /* Premium Emerald Green */
+  --secondary: #06B6D4; /* Electric Cyan */
+  --accent: #F59E0B;
+  --text-primary: #F3F4F6;
+  --text-secondary: #D1D5DB;
+  --text-muted: #9CA3AF;
+  
+  --font-headings: 'Space Grotesk', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+/* Light Mode Overrides */
+[data-theme="light"] {
+  --bg-color: #F9FAFB;
+  --card-bg: rgba(243, 244, 246, 0.7);
+  --card-bg-solid: #FFFFFF;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --primary: #059669; /* Premium Dark Green */
+  --secondary: #0891B2; /* Electric Cyan */
+  --accent: #D97706;
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6B7280;
+}
+
+/* Global Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 110%;
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+}
+
+/* Enforce global container centering to prevent page layouts shifting left */
+.container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Typography Constraints */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  font-weight: 550 !important;
+  letter-spacing: -0.02em;
+}
+
+p, span, li, a, label, input, textarea, select {
+  font-weight: 400;
+}
+
+strong, b {
+  font-weight: 500;
+}
+
+/* Ensure no font weight > 600 is rendered */
+* {
+  font-weight: inherit;
+}
+body { font-weight: 400; }
+h1, h2, h3, h4, h5, h6 { font-weight: 550; }
+button, .btn { font-weight: 500 !important; }
+.card-title, .nav-link, .badge-label { font-weight: 500; }
+
+/* Custom Glassmorphism Utilities */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-navbar {
+  background: rgba(11, 15, 25, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-b: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+}
+[data-theme="light"] .glass-navbar {
+  background: rgba(249, 250, 251, 0.75);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card-hover:hover {
+  transform: translateY(-5px);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.3);
+}
+
+/* Glow Effects */
+.text-glow-primary {
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+.text-glow-secondary {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+.glow-btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.glow-btn-primary:hover {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+}
+
+/* Background Gradients Orbs */
+.bg-gradient-orb {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+.orb-primary {
+  background: var(--primary);
+  top: 10%;
+  left: 5%;
+}
+.orb-secondary {
+  background: var(--secondary);
+  bottom: 15%;
+  right: 5%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
+/* Floating Action Button */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+.back-to-top:hover {
+  transform: translateY(-3px);
+  background: var(--secondary);
+  box-shadow: 0 6px 16px rgba(6, 182, 212, 0.4);
+}
+
+/* Pulse animation for active highlights */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+}
+.pulse-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+/* Light Mode Theme overrides for hardcoded Tailwind elements */
+[data-theme="light"] body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .bg-\[\#0B0F19\],
+[data-theme="light"] .bg-\[\#0B0F19\]\/60,
+[data-theme="light"] .bg-\[\#0B0F19\]\/80,
+[data-theme="light"] .bg-\[\#0B0F19\]\/40 {
+  background-color: var(--bg-color) !important;
+}
+
+[data-theme="light"] .bg-\[\#111827\],
+[data-theme="light"] .bg-\[\#111827\]\/30,
+[data-theme="light"] .bg-\[\#111827\]\/40,
+[data-theme="light"] .bg-\[\#111827\]\/60,
+[data-theme="light"] .bg-\[\#111827\]\/80,
+[data-theme="light"] .bg-\[\#111827\]\/90 {
+  background-color: var(--card-bg-solid) !important;
+  border-color: var(--card-border) !important;
+}
+
+[data-theme="light"] .bg-\[\#1F2937\],
+[data-theme="light"] .bg-\[\#1F2937\]\/40,
+[data-theme="light"] .bg-\[\#1F2937\]\/80 {
+  background-color: var(--card-bg-solid) !important;
+}
+
+[data-theme="light"] .text-\[\#F3F4F6\],
+[data-theme="light"] .text-white {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .text-\[\#D1D5DB\] {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="light"] .text-\[\#9CA3AF\] {
+  color: var(--text-muted) !important;
+}
+
+.text-\[\#06B6D4\] {
+  color: var(--secondary) !important;
+}
+
+.hover\:text-\[\#06B6D4\]:hover {
+  color: var(--secondary) !important;
+}
+
+.border-\[\#06B6D4\] {
+  border-color: var(--secondary) !important;
+}
+
+.bg-\[\#06B6D4\] {
+  background-color: var(--secondary) !important;
+}
+
+.bg-\[\#06B6D4\]\/20 {
+  background-color: rgba(6, 182, 212, 0.15) !important;
+}
+
+[data-theme="light"] .bg-\[\#06B6D4\]\/20 {
+  background-color: rgba(8, 145, 178, 0.15) !important;
+}
+
+.text-\[\#10B981\] {
+  color: var(--primary) !important;
+}
+
+.hover\:text-\[\#10B981\]:hover {
+  color: var(--primary) !important;
+}
+
+.border-\[\#10B981\] {
+  border-color: var(--primary) !important;
+}
+
+.bg-\[\#10B981\] {
+  background-color: var(--primary) !important;
+}
+
+.bg-\[\#10B981\]\/10 {
+  background-color: rgba(16, 185, 129, 0.08) !important;
+}
+
+[data-theme="light"] .bg-\[\#10B981\]\/10 {
+  background-color: rgba(5, 150, 105, 0.08) !important;
+}
+
+.bg-\[\#10B981\]\/20 {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+}
+
+[data-theme="light"] .bg-\[\#10B981\]\/20 {
+  background-color: rgba(5, 150, 105, 0.15) !important;
+}
+
+.bg-\[\#10B981\]\/90:hover {
+  background-color: var(--primary) !important;
+  filter: brightness(1.1);
+}
+
+[data-theme="light"] .border-gray-800,
+[data-theme="light"] .border-gray-900,
+[data-theme="light"] .border-gray-850 {
+  border-color: var(--card-border) !important;
+}
+
+/* Premium CTA Button Hover Transitions & Scale effects */
+a[href="register.html"],
+a.bg-\[\#10B981\],
+button.bg-\[\#10B981\],
+button[type="submit"],
+.glow-btn-primary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+a[href="register.html"]:hover,
+a.bg-\[\#10B981\]:hover,
+button.bg-\[\#10B981\]:hover,
+button[type="submit"]:hover,
+.glow-btn-primary:hover {
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.45) !important;
+  filter: brightness(1.1) !important;
+}
+
+/* Secondary Hero CTA Button Hover Effects */
+.btn-secondary-hero {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-secondary-hero:hover {
+  transform: translateY(-2px) scale(1.03) !important;
+  border-color: var(--primary) !important;
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Make RTL icon visible/brighter contrast in light mode */
+[data-theme="light"] #rtl-icon,
+[data-theme="light"] .fa-right-left,
+[data-theme="light"] #rtl-toggle i,
+[data-theme="light"] #rtl-toggle-mobile i {
+  color: var(--text-secondary) !important;
+}
+
+/* Enforce Solid Green Background & White Text for Sign Up button in both themes */
+nav a[href="register.html"],
+#mobile-menu a[href="register.html"] {
+  background-color: var(--primary) !important;
+  color: #FFFFFF !important;
+  border-color: var(--primary) !important;
+  opacity: 1 !important;
+}
+
+nav a[href="register.html"]:hover,
+#mobile-menu a[href="register.html"]:hover {
+  background-color: var(--primary) !important;
+  filter: brightness(0.9) !important;
+  color: #FFFFFF !important;
+}
+
+/* ============================================
+   Premium Social Icon Button — Dark & Light
+   ============================================ */
+.social-icon-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Light mode resting state — make icons clearly visible */
+[data-theme="light"] .social-icon-btn {
+  border: 1.5px solid rgba(0, 0, 0, 0.18) !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Dark mode hover — generic fallback */
+.social-icon-btn:hover {
+  transform: translateY(-4px) scale(1.12);
+  color: #FFFFFF !important;
+  background-color: var(--secondary) !important;
+  border-color: var(--secondary) !important;
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.45), 0 0 0 3px rgba(6, 182, 212, 0.12);
+}
+
+/* Light mode hover — keep white icon text legible */
+[data-theme="light"] .social-icon-btn:hover {
+  color: #FFFFFF !important;
+}
+
+/* ---- Per-platform branded hover colors ---- */
+
+/* Instagram */
+.social-icon-btn.instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%) !important;
+  border-color: transparent !important;
+  box-shadow: 0 6px 20px rgba(214, 36, 159, 0.5), 0 0 0 3px rgba(214, 36, 159, 0.12);
+}
+
+/* YouTube */
+.social-icon-btn.youtube:hover {
+  background-color: #FF0000 !important;
+  border-color: #FF0000 !important;
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5), 0 0 0 3px rgba(255, 0, 0, 0.12);
+}
+
+/* Facebook */
+.social-icon-btn.facebook:hover {
+  background-color: #1877F2 !important;
+  border-color: #1877F2 !important;
+  box-shadow: 0 6px 20px rgba(24, 119, 242, 0.5), 0 0 0 3px rgba(24, 119, 242, 0.12);
+}
+
+/* TikTok */
+.social-icon-btn.tiktok:hover {
+  background-color: #010101 !important;
+  border-color: #69C9D0 !important;
+  box-shadow: 0 6px 20px rgba(105, 201, 208, 0.45), 0 0 0 3px rgba(105, 201, 208, 0.12);
+}
+
+/* Light mode TikTok needs white icon on dark bg */
+[data-theme="light"] .social-icon-btn.tiktok:hover {
+  color: #FFFFFF !important;
+}
+
+
+/* Responsive navigation bar styling at 1024px to 1279px (lg range) keeping items on one line with larger font size */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  nav .container,
+  .navbar .container-fluid {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  nav a.text-xl,
+  .navbar-brand {
+    font-size: 1.1rem !important;
+    gap: 0.25rem !important;
+  }
+
+  nav div.hidden.lg\:flex:first-of-type,
+  nav div.hidden.lg\:flex.items-center.gap-8,
+  .navbar div.hidden.lg\:flex {
+    gap: 0.6rem !important;
+  }
+
+  nav div.hidden.lg\:flex:first-of-type a,
+  nav div.hidden.lg\:flex.items-center.gap-8 a,
+  .navbar div.hidden.lg\:flex a {
+    font-size: 13.5px !important;
+  }
+
+  nav div.hidden.lg\:flex:last-of-type,
+  nav div.hidden.lg\:flex.items-center.gap-4 {
+    gap: 0.35rem !important;
+  }
+
+  nav div.hidden.lg\:flex:last-of-type a,
+  nav div.hidden.lg\:flex.items-center.gap-4 a,
+  nav div.hidden.lg\:flex:last-of-type button,
+  nav div.hidden.lg\:flex.items-center.gap-4 button {
+    font-size: 13px !important;
+    padding-left: 0.65rem !important;
+    padding-right: 0.65rem !important;
+  }
+
+  /* Make RTL and Theme toggle buttons smaller */
+  nav #rtl-toggle,
+  nav #theme-toggle,
+  .navbar #rtl-toggle,
+  .navbar #theme-toggle {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+
+  /* Make the icons inside them smaller */
+  nav #rtl-toggle i,
+  nav #theme-toggle i,
+  .navbar #rtl-toggle i,
+  .navbar #theme-toggle i {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* Make mobile hamburger menu scrollable on smaller screens */
+#mobile-menu {
+  max-height: calc(100vh - 75px) !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide back to top button when mobile menu is active/open to prevent overlapping */
+body:has(#mobile-menu:not(.hidden)) #back-to-top {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Premium Social Login Buttons (Google / Apple) */
+.social-login-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.social-login-btn.google-btn:hover {
+  background-color: rgba(239, 68, 68, 0.08) !important; /* light red tint */
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.15);
+  transform: translateY(-1px);
+}
+
+.social-login-btn.apple-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .social-login-btn.apple-btn:hover {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   Centering Overrides for Headings, Cards, Paragraphs & Points
+   ========================================================================== */
+
+/* 1. Center all headings and subheadings globally across the entire website */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.section-subtitle,
+.subtitle,
+.lead,
+.font-heading,
+[class*="title"],
+[class*="subtitle"],
+[class*="subheading"] {
+  text-align: center !important;
+}
+
+/* Ensure paragraph subheadings right after headings are centered */
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p,
+.font-heading + p,
+.section-title + p,
+[class*="title"] + p {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 2. Center every card section and its internal elements (name, headings, sub headings, paragraphs) */
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer):not(form):not(table):not(.navbar-collapse),
+.card:not(.auth-card):not(header):not(aside):not(nav):not(footer):not(form):not(table),
+[class*="card"]:not(.auth-card):not(header):not(aside):not(nav):not(footer):not(form):not(table) {
+  text-align: center !important;
+}
+
+/* For inside-card text alignments */
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) p,
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) span,
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) a,
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) h1,
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) h2,
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) h3,
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) h4,
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) h5,
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) h6,
+.card:not(.auth-card) p, .card:not(.auth-card) span, .card:not(.auth-card) a, .card:not(.auth-card) h1, .card:not(.auth-card) h2, .card:not(.auth-card) h3, .card:not(.auth-card) h4, .card:not(.auth-card) h5, .card:not(.auth-card) h6,
+[class*="card"]:not(.auth-card) p, [class*="card"]:not(.auth-card) span, [class*="card"]:not(.auth-card) a, [class*="card"]:not(.auth-card) h1, [class*="card"]:not(.auth-card) h2, [class*="card"]:not(.auth-card) h3, [class*="card"]:not(.auth-card) h4, [class*="card"]:not(.auth-card) h5, [class*="card"]:not(.auth-card) h6 {
+  text-align: center !important;
+}
+
+/* Center flex content inside cards horizontally */
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) .flex,
+.card:not(.auth-card) .flex,
+[class*="card"]:not(.auth-card) .flex {
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* 3. If any section has points (lists), all points must start in a vertically straight line */
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) ul,
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) ol,
+.card:not(.auth-card) ul, .card:not(.auth-card) ol,
+[class*="card"]:not(.auth-card) ul, [class*="card"]:not(.auth-card) ol,
+section ul, section ol {
+  display: inline-block !important;
+  text-align: left !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) li,
+.card:not(.auth-card) li,
+[class*="card"]:not(.auth-card) li,
+section li {
+  text-align: left !important;
+}
+
+/* Support vertical alignment of checklist points inside cards (which might be div/p children instead of ul/li) */
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) .space-y-2:has(.fa-check),
+.card:not(.auth-card) .space-y-2:has(.fa-check),
+[class*="card"]:not(.auth-card) .space-y-2:has(.fa-check),
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) .space-y-3:has(.fa-check),
+.card:not(.auth-card) .space-y-3:has(.fa-check),
+[class*="card"]:not(.auth-card) .space-y-3:has(.fa-check) {
+  display: inline-block !important;
+  text-align: left !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) .space-y-2:has(.fa-check) > *,
+.card:not(.auth-card) .space-y-2:has(.fa-check) > *,
+[class*="card"]:not(.auth-card) .space-y-2:has(.fa-check) > *,
+.glass-panel:not(.auth-card):not(header):not(aside):not(nav):not(footer) .space-y-3:has(.fa-check) > *,
+.card:not(.auth-card) .space-y-3:has(.fa-check) > *,
+[class*="card"]:not(.auth-card) .space-y-3:has(.fa-check) > * {
+  text-align: left !important;
+}
+
+/* Ensure nested child blocks like icons inside inline-block lists align properly */
+li i, .space-y-2 i, .space-y-3 i {
+  text-align: left !important;
+}
+
+/* Revert centering and layout settings in the auth-card to ensure normal form alignment */
+.auth-card {
+  text-align: left !important;
+  width: 100% !important;
+}
+
+.auth-card p:not(.font-heading),
+.auth-card span:not(.font-heading),
+.auth-card label,
+.auth-card input,
+.auth-card select,
+.auth-card a:not(.font-heading) {
+  text-align: left !important;
+}
+
+.auth-card .text-center,
+.auth-card .text-center * {
+  text-align: center !important;
+}
+
+/* Font size fixes for auth pages (making them larger and legible, while protecting the brand logo font sizes) */
+.auth-card label,
+.auth-card label *,
+.auth-card .text-\[10px\],
+.auth-card .text-\[9px\] {
+  font-size: 0.85rem !important; /* ~13.5px */
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+.auth-card input,
+.auth-card select,
+.auth-card .social-login-btn,
+.auth-card .text-xs,
+.auth-card a:not(.font-heading) {
+  font-size: 0.95rem !important; /* ~15px */
+}
+.auth-card form button[type="submit"] {
+  font-size: 1rem !important; /* ~16px */
+  font-weight: 500 !important;
+}
+
+/* Global form input field labels and values left-aligned */
+form label,
+form input,
+form select,
+form textarea,
+.form-group *,
+.form-label,
+input,
+select,
+textarea,
+label {
+  text-align: left !important;
+}
+
+/* Ensure section top headings and their action buttons are centered globally */
+section .flex:has(h2):has(a),
+section .flex:has(h2):has(button),
+section .container > .flex:has(a),
+section .container > .flex:has(button) {
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 1.5rem !important;
+}
+
+/* Stack center for other flex headers with buttons */
+section div.flex.justify-between.items-start,
+section div.flex.justify-between.items-end {
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 1.5rem !important;
+}
+
+/* Center buttons in sections */
+section button,
+section .btn,
+section a[class*="rounded-full"],
+section a[class*="px-"] {
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  float: none !important;
+}
+
+/* Footer layout and alignment fixes (reverting centered headings and aligning lists cleanly) */
+footer .grid > div,
+footer .grid > div * {
+  text-align: left !important;
+}
+footer .grid > div .flex {
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+footer .social-icon-btn i {
+  text-align: center !important; /* Keep icons centered inside circular buttons */
+}
+
+/* Remove underlines from navbar menus, links, and buttons globally */
+nav a,
+nav a:hover,
+#mobile-menu a,
+#mobile-menu a:hover,
+.nav-link,
+.nav-link:hover,
+.navbar-brand,
+.navbar-brand:hover,
+.btn,
+.btn:hover,
+button,
+button:hover,
+a[class*="btn"],
+a[class*="btn"]:hover,
+a[class*="button"],
+a[class*="button"]:hover,
+.social-login-btn,
+.social-login-btn:hover,
+a[class*="rounded-full"],
+a[class*="rounded-full"]:hover,
+a[href*="register"],
+a[href*="register"]:hover,
+a[href*="login"],
+a[href*="login"]:hover {
+  text-decoration: none !important;
+}

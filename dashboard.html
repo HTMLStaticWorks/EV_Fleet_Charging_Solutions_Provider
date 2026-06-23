@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EV Fleet Manager Portal - Dashboard</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            darkbg: '#0B0F19',
+            cardbg1: '#111827',
+            cardbg2: '#1F2937',
+            primary: '#10B981',
+            secondary: '#06B6D4',
+            accent: '#F59E0B',
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <style>
+    /* Premium SaaS Dashboard overrides */
+    .sidebar-link.active {
+      background-color: rgba(16, 185, 129, 0.1);
+      border-left: 2px solid #10B981;
+      color: #10B981;
+    }
+    .neon-glow-border {
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+    .badge-locked {
+      filter: grayscale(1) opacity(0.4);
+    }
+  </style>
+</head>
+<body class="bg-[#0B0F19] text-[#F3F4F6] min-h-screen flex flex-col lg:flex-row overflow-x-hidden">
+
+  <!-- Sidebar Navigation (Desktop) -->
+  <aside class="hidden lg:flex flex-col w-64 glass-panel border-r border-gray-900 min-h-screen p-6 justify-between shrink-0">
+    <div class="space-y-8">
+      <!-- Portal Brand -->
+      <div class="flex justify-between items-center">
+        <a class="flex items-center gap-2 text-[#F3F4F6] text-lg font-heading tracking-wider" href="index.html">
+          <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
+          <span>EV <span class="text-[#10B981] font-medium">FLEET</span></span>
+        </a>
+      </div>
+ 
+      <!-- Navigation Links -->
+      <nav class="space-y-1">
+        <button onclick="showSection('overview')" id="nav-overview" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all active">
+          <i class="fa-solid fa-chart-pie w-4"></i> Dashboard
+        </button>
+        <button onclick="showSection('progress')" id="nav-progress" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+          <i class="fa-solid fa-chart-line w-4"></i> Fleet Analytics
+        </button>
+        <button onclick="showSection('log')" id="nav-log" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+          <i class="fa-solid fa-clipboard-list w-4"></i> Charging Sessions
+        </button>
+        <button onclick="showSection('achievements')" id="nav-achievements" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+          <i class="fa-solid fa-bell w-4"></i> System Alerts
+        </button>
+        <button onclick="showSection('routes')" id="nav-routes" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+          <i class="fa-solid fa-network-wired w-4"></i> Charger Directory
+        </button>
+        <button onclick="showSection('bookings')" id="nav-bookings" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+          <i class="fa-solid fa-clock w-4"></i> Charging Schedules
+        </button>
+        <button onclick="showSection('events')" id="nav-events" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+          <i class="fa-solid fa-id-card w-4"></i> RFID Key Manager
+        </button>
+        <button onclick="showSection('membership')" id="nav-membership" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+          <i class="fa-solid fa-credit-card w-4"></i> Billing & Tariffs
+        </button>
+        <button onclick="showSection('profile')" id="nav-profile" class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all">
+          <i class="fa-solid fa-circle-user w-4"></i> Depot Profile
+        </button>
+      </nav>
+    </div>
+ 
+    <!-- User Section footer -->
+    <div class="flex items-center gap-3 border-t border-gray-900 pt-4">
+      <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-[#10B981]/40 shrink-0">
+        <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg" alt="Marcus Vance" class="w-full h-full object-cover object-top">
+      </div>
+      <div>
+        <p class="text-xs font-heading">Marcus Vance</p>
+        <a href="index.html" class="inline-flex items-center gap-1 text-xs font-medium text-white bg-red-500/80 hover:bg-red-500 px-2 py-0.5 rounded-md transition-colors mt-0.5">
+          <i class="fa-solid fa-right-from-bracket text-[10px]"></i> Log Out
+        </a>
+      </div>
+    </div>
+  </aside>
+ 
+  <!-- Right Panel Content Wrapper -->
+  <div class="flex-1 flex flex-col min-h-screen w-full max-w-full overflow-x-hidden">
+    <!-- Top Header Bar -->
+    <header class="w-full glass-panel border-b border-gray-900 px-4 md:px-6 py-4 flex justify-between items-center bg-[#0B0F19]/40 backdrop-blur-md sticky top-0 z-30">
+      <!-- Left side -->
+      <div class="flex items-center gap-3">
+        <!-- Mobile Toggle (Hamburger Button) -->
+        <button class="lg:hidden text-[#F3F4F6] text-xl" id="mobile-menu-btn" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <!-- Mobile Brand Logo -->
+        <a class="lg:hidden flex items-center gap-2 text-[#F3F4F6] text-sm font-heading tracking-wider" href="index.html">
+          <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
+          <span>EV <span class="text-[#10B981] font-medium">FLEET</span> <span class="text-[8px] text-gray-500 font-sans">PORTAL</span></span>
+        </a>
+        <!-- Desktop Welcome Message -->
+        <div class="hidden lg:block">
+          <h2 class="text-base md:text-lg font-heading text-[#F3F4F6] m-0">Welcome Back, Marcus</h2>
+          <p class="text-[10px] text-[#9CA3AF] m-0">Colorado Charging Depot Portal</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="rtl-toggle" class="hidden lg:flex w-9 h-9 items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors" title="Toggle RTL">
+          <i id="rtl-icon" class="fa-solid fa-right-left text-sm text-gray-300"></i>
+        </button>
+        <button id="theme-toggle" class="hidden lg:flex w-9 h-9 items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors" title="Toggle Theme">
+          <i id="theme-icon" class="fa-regular fa-sun text-[#F59E0B] text-sm"></i>
+        </button>
+        <div class="flex items-center gap-2 lg:pl-3 lg:border-l lg:border-gray-800">
+          <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-[#10B981]/40 shrink-0">
+            <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg" alt="Marcus Vance" class="w-full h-full object-cover object-top">
+          </div>
+          <span class="hidden sm:inline text-xs font-heading text-[#F3F4F6]">Marcus Vance</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Dropdown Navigation for Dashboard -->
+    <div id="mobile-menu" class="hidden fixed top-[73px] left-0 w-full glass-panel py-6 px-4 z-40 lg:hidden flex flex-col gap-2 border-b border-gray-900">
+      <button onclick="showSection('overview'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-chart-pie w-4"></i> Dashboard
+      </button>
+      <button onclick="showSection('progress'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-chart-line w-4"></i> Fleet Analytics
+      </button>
+      <button onclick="showSection('log'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-clipboard-list w-4"></i> Charging Sessions
+      </button>
+      <button onclick="showSection('achievements'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-bell w-4"></i> System Alerts
+      </button>
+      <button onclick="showSection('routes'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-network-wired w-4"></i> Charger Directory
+      </button>
+      <button onclick="showSection('bookings'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-clock w-4"></i> Charging Schedules
+      </button>
+      <button onclick="showSection('events'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-id-card w-4"></i> RFID Key Manager
+      </button>
+      <button onclick="showSection('membership'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-credit-card w-4"></i> Billing & Tariffs
+      </button>
+      <button onclick="showSection('profile'); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-[#D1D5DB] hover:bg-gray-800 transition-all">
+        <i class="fa-solid fa-circle-user w-4"></i> Depot Profile
+      </button>
+      <div class="h-[1px] bg-gray-800 my-2"></div>
+      <div class="flex justify-center items-center gap-4 py-2">
+        <button id="rtl-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors text-white">
+          <i class="fa-solid fa-right-left text-xs text-gray-300"></i>
+        </button>
+        <button id="theme-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors text-white">
+          <i id="theme-icon-mobile" class="fa-regular fa-sun text-[#F59E0B] text-xs"></i>
+        </button>
+      </div>
+      <a href="index.html" class="w-full text-left py-2 px-3 rounded-lg flex items-center gap-3 text-xs text-red-400 hover:bg-red-950/20 transition-all">
+        <i class="fa-solid fa-right-from-bracket w-4"></i> Log Out
+      </a>
+    </div>
+
+    <!-- Main Content Box -->
+    <main class="flex-1 p-3 md:p-8 lg:p-10 overflow-y-auto lg:mb-0 w-full max-w-full overflow-x-hidden">
+      
+      <!-- 1. OVERVIEW PANEL -->
+      <div id="panel-overview" class="dashboard-panel space-y-8">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h3 class="text-lg font-heading">Depot Portal Overview</h3>
+            <p class="text-xs text-[#9CA3AF]">Real-time charger metrics and grid states</p>
+          </div>
+          <button onclick="triggerQuickLog()" class="px-4 py-2 rounded-xl bg-[#10B981] hover:bg-[#10B981]/90 text-white font-medium text-xs flex items-center gap-1.5 shadow-lg shadow-[#10B981]/20 shrink-0">
+            <i class="fa-solid fa-plus"></i> Quick Log Session
+          </button>
+        </div>
+ 
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+          <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Peak Grid Load</span>
+            <p class="text-sm sm:text-2xl font-heading text-[#06B6D4] whitespace-nowrap">142 kW</p>
+          </div>
+          <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Active Chargers</span>
+            <p class="text-sm sm:text-2xl font-heading text-[#10B981]">18 / 20</p>
+          </div>
+          <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Energy Delivered</span>
+            <p class="text-sm sm:text-2xl font-heading text-[#F59E0B]">112 MWh</p>
+          </div>
+          <div class="glass-panel p-3.5 sm:p-5 rounded-2xl space-y-1">
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-normal sm:tracking-wider text-[#9CA3AF]">Online Uptime</span>
+            <p class="text-sm sm:text-2xl font-heading text-emerald-400">99.9%</p>
+          </div>
+        </div>
+ 
+        <!-- Overview Charts & Mini Logs -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full min-w-0">
+          <div class="lg:col-span-8 glass-panel p-4 sm:p-6 rounded-2xl space-y-4 min-w-0">
+            <h4 class="text-sm font-heading">Energy Consumption Trend</h4>
+            <div class="h-64 relative w-full overflow-hidden">
+              <canvas id="overviewChart"></canvas>
+            </div>
+          </div>
+          <div class="lg:col-span-4 glass-panel p-6 rounded-2xl space-y-4 min-w-0">
+            <h4 class="text-sm font-heading">Recent System Alerts</h4>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 p-2 bg-[#0B0F19]/40 rounded-xl">
+                <i class="fa-solid fa-triangle-exclamation text-yellow-500 text-lg"></i>
+                <div>
+                  <h5 class="text-xs font-heading">Depot Load Alert</h5>
+                  <p class="text-[10px] text-[#9CA3AF]">Grid load approached 90% threshold</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-2 bg-[#0B0F19]/40 rounded-xl">
+                <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+                <div>
+                  <h5 class="text-xs font-heading">Session Complete</h5>
+                  <p class="text-[10px] text-[#9CA3AF]">Bus #12 fully charged at Charger #03</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. FLEET ANALYTICS PANEL -->
+      <div id="panel-progress" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">Depot Energy Analytics</h2>
+          <p class="text-xs text-[#9CA3AF]">Energy consumption metrics across weeks.</p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl space-y-4 min-w-0">
+          <h4 class="text-sm font-heading">Weekly Load Profiling (kWh)</h4>
+          <div class="h-80 relative w-full overflow-hidden">
+            <canvas id="fullProgressChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. CHARGING SESSIONS PANEL -->
+      <div id="panel-log" class="dashboard-panel space-y-6 hidden">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-xl font-heading">Charging Sessions Log</h2>
+            <p class="text-xs text-[#9CA3AF]">History of vehicle charging transactions.</p>
+          </div>
+          <button onclick="openLogModal()" class="px-4 py-2 rounded-xl bg-[#10B981] text-white text-xs font-medium"><i class="fa-solid fa-plus mr-1"></i> Log Session</button>
+        </div>
+
+        <!-- Logs Filter bar -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center glass-panel p-4 rounded-xl w-full">
+          <input type="text" id="logSearch" placeholder="Search by Charger ID..." class="px-4 py-1.5 rounded-lg bg-[#0B0F19] border border-gray-800 text-xs w-full sm:max-w-xs focus:outline-none focus:border-[#06B6D4]">
+          <select id="logGradeFilter" class="w-full sm:w-auto px-4 py-1.5 rounded-lg bg-[#0B0F19] border border-gray-800 text-xs focus:outline-none focus:border-[#06B6D4]">
+            <option value="all">All Connectors</option>
+            <option value="CCS">CCS</option>
+            <option value="J1772">J1772</option>
+            <option value="Type 2 AC">Type 2 AC</option>
+          </select>
+        </div>
+
+        <!-- Logs Table -->
+        <div class="glass-panel rounded-2xl overflow-hidden">
+          <div class="table-responsive">
+            <table class="table table-dark table-hover mb-0 text-xs" id="climbLogTable">
+              <thead>
+                <tr class="border-b border-gray-800 text-[#9CA3AF]">
+                  <th class="py-3 px-4">Date</th>
+                  <th class="py-3 px-4">Charger ID</th>
+                  <th class="py-3 px-4">Connector</th>
+                  <th class="py-3 px-4 text-center">Duration (Mins)</th>
+                  <th class="py-3 px-4 text-right">Energy (kWh)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-900">
+                <tr>
+                  <td class="py-3 px-4 text-gray-500">2026-06-18</td>
+                  <td class="py-3 px-4 font-medium">Charger #04</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#10B981]/20 text-[#10B981]">CCS</span></td>
+                  <td class="py-3 px-4 text-center">45</td>
+                  <td class="py-3 px-4 text-right text-emerald-400">62.4 kWh</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 text-gray-500">2026-06-16</td>
+                  <td class="py-3 px-4 font-medium">Charger #02</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-[#06B6D4]/20 text-[#06B6D4]">J1772</span></td>
+                  <td class="py-3 px-4 text-center">120</td>
+                  <td class="py-3 px-4 text-right text-emerald-400">22.8 kWh</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. SYSTEM ALERTS PANEL -->
+      <div id="panel-achievements" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">System Milestone Alerts</h2>
+          <p class="text-xs text-[#9CA3AF]">Earned depot operational milestones and badges.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <!-- Badge 1 -->
+          <div onclick="clickBadge('First Plugged')" class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
+            <i class="fa-solid fa-plug text-emerald-400 text-3xl"></i>
+            <h5 class="text-xs font-heading">First Plugged</h5>
+            <p class="text-[9px] text-[#9CA3AF]">Unlocked</p>
+          </div>
+          <!-- Badge 2 -->
+          <div onclick="clickBadge('10 MWh Delivered')" class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-600 transition-colors">
+            <i class="fa-solid fa-charging-station text-blue-400 text-3xl"></i>
+            <h5 class="text-xs font-heading">10 MWh Delivered</h5>
+            <p class="text-[9px] text-[#9CA3AF]">Unlocked</p>
+          </div>
+          <!-- Badge 3 -->
+          <div id="badge-50" onclick="unlockFiftyBadge()" class="glass-panel p-4 rounded-xl text-center space-y-2 cursor-pointer relative hover:border-gray-650 transition-colors badge-locked">
+            <i class="fa-solid fa-city text-[#F59E0B] text-3xl"></i>
+            <h5 class="text-xs font-heading">Grid Resilient</h5>
+            <p class="text-[9px] text-gray-500" id="badge-50-label">Locked</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. CHARGER DIRECTORY PANEL -->
+      <div id="panel-routes" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">Charger Station Directory</h2>
+          <p class="text-xs text-[#9CA3AF]">Live charger ports configured across Home 2s.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="flex flex-col sm:flex-row gap-3 glass-panel p-4 rounded-xl text-xs w-full">
+          <select id="routeWallFilter" class="w-full sm:w-auto bg-[#0B0F19] border border-gray-800 px-3 py-1.5 rounded-lg focus:outline-none focus:border-[#06B6D4]">
+            <option value="all">All Locations</option>
+            <option value="downtown">Downtown Depot</option>
+            <option value="north">North Logistics</option>
+            <option value="municipal">Municipal Depot</option>
+          </select>
+          <select id="routeGradeFilter" class="w-full sm:w-auto bg-[#0B0F19] border border-gray-800 px-3 py-1.5 rounded-lg focus:outline-none focus:border-[#06B6D4]">
+            <option value="all">All Types</option>
+            <option value="DC Fast">DC Fast Charger</option>
+            <option value="Level 2">Level 2 AC</option>
+          </select>
+        </div>
+
+        <!-- Routes Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full min-w-0" id="routesGrid">
+          <!-- Route 1 -->
+          <div class="glass-panel p-5 rounded-2xl space-y-3" data-wall="downtown" data-grade="DC Fast">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] bg-[#10B981]/20 text-[#10B981] px-2 py-0.5 rounded">Downtown Depot</span>
+              <span class="text-xs font-heading text-[#F59E0B]">DC Fast</span>
+            </div>
+            <h4 class="text-sm font-heading">Charger #01</h4>
+            <p class="text-xs text-[#9CA3AF]">Status: Online. High-power DC Fast CCS charging terminal.</p>
+          </div>
+          <!-- Route 2 -->
+          <div class="glass-panel p-5 rounded-2xl space-y-3" data-wall="north" data-grade="Level 2">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] bg-[#06B6D4]/20 text-[#06B6D4] px-2 py-0.5 rounded">North Logistics</span>
+              <span class="text-xs font-heading text-[#F59E0B]">Level 2</span>
+            </div>
+            <h4 class="text-sm font-heading">Charger #02</h4>
+            <p class="text-xs text-[#9CA3AF]">Status: In-Use. Level 2 AC smart charging plug J1772.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. CHARGING SCHEDULES -->
+      <div id="panel-bookings" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">Smart Charging Schedules</h2>
+          <p class="text-xs text-[#9CA3AF]">Manage charging windows to prevent utility peak pricing.</p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl space-y-4">
+          <h4 class="text-sm font-heading">Scheduled Charging Slots</h4>
+          <div class="p-4 bg-[#0B0F19]/60 border border-gray-800 rounded-xl flex flex-col sm:flex-row gap-3 justify-between items-start sm:items-center">
+            <div class="flex items-start sm:items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-[#10B981]/20 flex items-center justify-center text-[#10B981] shrink-0 mt-0.5 sm:mt-0">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div>
+                <h5 class="text-xs font-heading">Off-Peak Night Charging Window</h5>
+                <p class="text-[10px] text-[#9CA3AF] mt-0.5">Scheduled for June 26, 2026 • 22:00 - 06:00 (Automatic load capping active)</p>
+              </div>
+            </div>
+            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded uppercase font-heading shrink-0">Confirmed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. RFID KEY MANAGER -->
+      <div id="panel-events" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">RFID Key & Driver Access</h2>
+          <p class="text-xs text-[#9CA3AF]">Manage active driver RFID authorization profiles.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full min-w-0">
+          <div class="glass-panel p-6 rounded-2xl space-y-4 min-w-0">
+            <h4 class="text-sm font-heading">Driver RFID Key Batch #01</h4>
+            <p class="text-xs text-[#9CA3AF]">45 active keys issued to logistics drivers, linked directly to telemetry profiles.</p>
+            <button onclick="alert('Keys database portal loading...');" class="w-full py-2 rounded-lg bg-[#10B981] text-white text-xs font-medium">Manage Keys</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. BILLING & TARIFFS -->
+      <div id="panel-membership" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">Energy Billing & Tariffs</h2>
+          <p class="text-xs text-[#9CA3AF]">Track commercial electricity billing plans and sub-meter splits.</p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl space-y-4">
+          <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+            <div>
+              <h4 class="text-sm font-heading">Time-of-Use Utility Tariff Plan</h4>
+              <p class="text-[10px] text-[#9CA3AF]">Active status • Peak hours ($0.24/kWh) • Off-peak hours ($0.12/kWh)</p>
+            </div>
+            <span class="text-xs font-heading text-[#06B6D4]">$0.16 / kWh average</span>
+          </div>
+          <button onclick="alert('Billing details loading...');" class="px-4 py-2 rounded-xl border border-gray-800 text-xs hover:bg-gray-800 transition-colors">Configure Billing Shares</button>
+        </div>
+      </div>
+
+      <!-- 9. DEPOT PROFILE -->
+      <div id="panel-profile" class="dashboard-panel space-y-6 hidden">
+        <div>
+          <h2 class="text-xl font-heading">Depot Configuration Settings</h2>
+          <p class="text-xs text-[#9CA3AF]">Update depot preferences and vehicle load parameters.</p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl space-y-4">
+          <div>
+            <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Primary Fleet Vehicle Type</label>
+            <select class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+              <option>Delivery Vans (CCS)</option>
+              <option>Heavy-Duty Trucks (MCS)</option>
+              <option>Public Buses (Pantograph)</option>
+            </select>
+          </div>
+          <button onclick="alert('Depot configurations updated successfully!');" class="w-full py-2.5 rounded-xl bg-[#10B981] text-white text-xs font-medium">Save Configurations</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Log Session Modal -->
+  <div class="modal fade" id="logClimbModal" tabindex="-1" aria-labelledby="logClimbModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-[#111827] border border-gray-800 text-white rounded-3xl p-6">
+        <div class="modal-header border-b-0 p-0 justify-between items-center">
+          <h5 class="modal-title font-heading text-lg" id="logClimbModalLabel">Log Charging Session</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0 mt-4">
+          <form class="space-y-4" id="logClimbForm" onsubmit="submitClimbLog(event)">
+            <div>
+              <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Charger ID</label>
+              <input type="text" id="logRouteName" required placeholder="eg. Charger #05" class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Connector</label>
+                <select id="logRouteGrade" class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+                  <option value="CCS">CCS</option>
+                  <option value="J1772">J1772</option>
+                  <option value="Type 2 AC">Type 2 AC</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Duration (Mins)</label>
+                <input type="number" id="logRouteAttempts" required min="1" max="1440" value="45" class="w-full px-4 py-2 bg-[#0B0F19] border border-gray-850 rounded-xl text-xs text-white focus:outline-none focus:border-[#06B6D4]">
+              </div>
+            </div>
+            <button type="submit" class="w-full py-3 rounded-xl bg-[#10B981] hover:bg-[#10B981]/90 transition-all font-medium text-xs uppercase tracking-wider mt-4">
+              Submit Session Log
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

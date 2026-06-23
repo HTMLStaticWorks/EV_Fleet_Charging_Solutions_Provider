@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EV Fleet - Smart EV Fleet Charging Solutions</title>
+  <meta name="description"
+    content="EV Fleet provides premium smart energy charging solutions, real-time load management dashboards, and grid assessment services for logistics fleets and municipalities.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- CSS Stylesheets -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            darkbg: '#0B0F19',
+            cardbg1: '#111827',
+            cardbg2: '#1F2937',
+            primary: '#10B981',
+            secondary: '#06B6D4',
+            accent: '#F59E0B',
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body class="bg-[#0B0F19] text-[#F3F4F6] transition-colors duration-300">
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg fixed-top glass-navbar py-3">
+    <div class="container-fluid px-4 max-w-7xl mx-auto flex justify-between items-center">
+      <a class="navbar-brand flex items-center gap-2 text-[#F3F4F6] text-xl tracking-wider font-heading"
+        href="index.html">
+        <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
+        <span>EV <span class="text-[#10B981] font-medium">FLEET</span></span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden lg:flex items-center gap-8">
+        <a class="text-[#F3F4F6] hover:text-[#06B6D4] transition-colors" href="index.html">Home</a>
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="home2.html">Home 2</a>
+
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="about.html">About</a>
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="programs.html">Solutions</a>
+
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="coaching.html">Consulting</a>
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="community.html">Partnerships</a>
+
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="contact.html">Contact</a>
+        <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="dashboard.html">Dashboard</a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="hidden lg:flex items-center gap-4">
+        <button id="rtl-toggle"
+          class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors"
+          title="Toggle RTL">
+          <i id="rtl-icon" class="fa-solid fa-right-left text-lg text-gray-300"></i>
+        </button>
+        <button id="theme-toggle"
+          class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors"
+          title="Toggle Theme">
+          <i id="theme-icon" class="fa-regular fa-sun text-[#F59E0B] text-lg"></i>
+        </button>
+        <a href="register.html"
+          class="px-5 py-2 rounded-full border border-[#10B981] bg-[#10B981]/10 text-[#F3F4F6] hover:bg-[#10B981] transition-all duration-300 font-medium text-sm">
+          Sign Up
+        </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button class="lg:hidden text-[#F3F4F6] text-xl" id="mobile-menu-btn" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div id="mobile-menu"
+    class="hidden fixed top-[70px] left-0 w-full glass-panel py-6 px-4 z-40 lg:hidden flex flex-col gap-4">
+    <a class="text-lg text-[#D1D5DB]" href="index.html">Home</a>
+    <a class="text-lg text-[#D1D5DB]" href="home2.html">Home 2</a>
+    <a class="text-lg text-[#D1D5DB]" href="about.html">About</a>
+    <a class="text-lg text-[#D1D5DB]" href="programs.html">Solutions</a>
+    <a class="text-lg text-[#D1D5DB]" href="coaching.html">Consulting</a>
+    <a class="text-lg text-[#D1D5DB]" href="community.html">Partnerships</a>
+
+    <a class="text-lg text-[#D1D5DB]" href="contact.html">Contact</a>
+    <a class="text-lg text-[#D1D5DB]" href="dashboard.html">Dashboard</a>
+    <div class="h-[1px] bg-gray-800 my-2"></div>
+    <div class="flex justify-center items-center gap-4 py-2">
+      <button id="rtl-toggle-mobile"
+        class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors">
+        <i class="fa-solid fa-right-left text-lg text-gray-300"></i>
+      </button>
+      <button id="theme-toggle-mobile"
+        class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors">
+        <i id="theme-icon-mobile" class="fa-regular fa-sun text-[#F59E0B] text-lg"></i>
+      </button>
+    </div>
+    <a href="register.html"
+      class="w-full text-center py-3 rounded-xl bg-[#10B981] text-white hover:bg-opacity-95 transition-all">
+      Sign Up
+    </a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen lg:min-h-0 flex items-center pt-24 lg:pt-28 lg:pb-20 xl:pt-36 xl:pb-28 overflow-hidden">
+    <!-- Gradient Orbs -->
+    <div class="bg-gradient-orb orb-primary"></div>
+    <div class="bg-gradient-orb orb-secondary"></div>
+
+    <div class="container max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center relative z-10">
+      <!-- Hero Left Text -->
+      <div class="lg:col-span-6 space-y-6" data-aos="fade-right">
+        <span class="text-xs uppercase tracking-widest text-[#06B6D4] font-heading">Intelligent Fleet Electrification</span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading leading-tight text-[#F3F4F6]">
+          Transition Your Fleet <br><span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-[#10B981] to-[#06B6D4] text-glow-primary">With
+            Confidence</span>
+        </h1>
+        <p class="text-[#D1D5DB] text-lg font-light leading-relaxed max-w-xl">
+          Deploy smart charging infrastructure, monitor real-time charger health, and optimize grid energy loads for logistics companies and municipalities.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 pt-4">
+          <a href="register.html"
+            class="px-8 py-3 rounded-full bg-[#10B981] text-white glow-btn-primary hover:bg-[#10B981]/90 transition-all font-medium text-center w-full sm:w-auto">
+            Get Site Assessment
+          </a>
+          <a href="programs.html"
+            class="px-8 py-3 rounded-full border border-gray-800 bg-[#111827]/40 hover:border-gray-600 transition-all text-[#F3F4F6] btn-secondary-hero text-center w-full sm:w-auto">
+            Explore Solutions
+          </a>
+        </div>
+      </div>
+      <!-- Hero Right Image Frame -->
+      <div class="lg:col-span-6 flex justify-center relative" data-aos="fade-left">
+        <!-- Floating Glass Badge -->
+        <div class="absolute -top-8 -left-8 lg:-left-16 glass-panel p-4 rounded-xl flex items-center gap-3 z-10">
+          <i class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+          <div>
+            <p class="text-xs text-[#9CA3AF]">Fleet Efficiency</p>
+            <p class="text-sm font-medium">99.9% Depot Uptime</p>
+          </div>
+        </div>
+
+        <!-- Image Card with Glow & Borders -->
+        <div
+          class="relative w-full max-w-md h-[280px] sm:h-[350px] md:h-[400px] lg:h-[450px] rounded-3xl overflow-hidden border border-gray-800 shadow-2xl glass-card-hover">
+          <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80"
+            alt="Electric commercial delivery van charging" class="w-full h-full object-cover object-center">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Featured Charging Solutions -->
+  <section class="py-24 bg-[#0B0F19]">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="text-center space-y-3 mb-16" data-aos="fade-up">
+        <span class="text-xs uppercase tracking-widest text-[#06B6D4] font-heading">Depot & Grid Solutions</span>
+        <h2 class="text-3xl md:text-4xl font-heading">Tailored Charging Infrastructure</h2>
+        <p class="text-[#9CA3AF] max-w-xl mx-auto">Reliable hardware and smart cloud software engineered for logistics fleets, transit systems, and municipal depots.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Experience Card 1 -->
+        <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="100">
+          <div class="h-48 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1647462102967-68c17df3d758?auto=format&fit=crop&w=600&q=80" alt="AC Charging Stations"
+              class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 p-3 bg-black/40 backdrop-blur-md rounded-lg text-white">
+              <i class="fa-solid fa-plug-circle-bolt text-[#06B6D4]"></i>
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-xl font-heading">Depot AC Charging</h3>
+            <p class="text-sm text-[#D1D5DB]">Level 2 AC smart chargers (7.4kW - 22kW) optimized for overnight depot dwell times and vehicle pre-conditioning.</p>
+          </div>
+        </div>
+
+        <!-- Experience Card 2 -->
+        <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="200">
+          <div class="h-48 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80" alt="DC Fast Charger"
+              class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 p-3 bg-black/40 backdrop-blur-md rounded-lg text-white">
+              <i class="fa-solid fa-bolt-lightning text-[#10B981]"></i>
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-xl font-heading">DC Fast Charging</h3>
+            <p class="text-sm text-[#D1D5DB]">High-power chargers (50kW - 350kW) designed for mid-route top-ups, short dwells, and rapid turnaround times.</p>
+          </div>
+        </div>
+
+        <!-- Experience Card 3 -->
+        <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="300">
+          <div class="h-48 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Load Management Chart"
+              class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 p-3 bg-black/40 backdrop-blur-md rounded-lg text-white">
+              <i class="fa-solid fa-gauge-high text-[#F59E0B]"></i>
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-xl font-heading">Smart Load Management</h3>
+            <p class="text-sm text-[#D1D5DB]">Cloud-based software that dynamically balances power output across depots to prevent grid demand surges.</p>
+          </div>
+        </div>
+
+        <!-- Experience Card 4 -->
+        <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="400">
+          <div class="h-48 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80" alt="RFID Card Access"
+              class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 p-3 bg-black/40 backdrop-blur-md rounded-lg text-white">
+              <i class="fa-solid fa-id-card text-[#06B6D4]"></i>
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-xl font-heading">RFID Access Control</h3>
+            <p class="text-sm text-[#D1D5DB]">Secure driver authorization system utilizing RFID cards and mobile keys to control and track charger utilization.</p>
+          </div>
+        </div>
+
+        <!-- Experience Card 5 -->
+        <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="500">
+          <div class="h-48 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=600&q=80" alt="Municipal Transit Hub"
+              class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 p-3 bg-black/40 backdrop-blur-md rounded-lg text-white">
+              <i class="fa-solid fa-city text-[#10B981]"></i>
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-xl font-heading">Municipal Solutions</h3>
+            <p class="text-sm text-[#D1D5DB]">Scalable transit and municipal fleet charging hubs configured to meet strict carbon-reduction mandates.</p>
+          </div>
+        </div>
+
+        <!-- Experience Card 6 -->
+        <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="600">
+          <div class="h-48 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Fleet APIs Integration"
+              class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 p-3 bg-black/40 backdrop-blur-md rounded-lg text-white">
+              <i class="fa-solid fa-network-wired text-[#F59E0B]"></i>
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-xl font-heading">Fleet Management APIs</h3>
+            <p class="text-sm text-[#D1D5DB]">Seamless integration with existing fleet telematics, routing systems, and corporate accounting databases.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. EV Fleet Stats -->
+  <section class="py-16 bg-[#111827]/40 border-y border-gray-800">
+    <div class="container max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div data-aos="zoom-in" data-aos-delay="100">
+        <h3 class="text-4xl font-heading text-[#10B981] font-medium">25MWh+</h3>
+        <p class="text-xs text-[#9CA3AF] uppercase tracking-wider mt-1">Energy Delivered</p>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="200">
+        <h3 class="text-4xl font-heading text-[#10B981] font-medium">300+</h3>
+        <p class="text-xs text-[#9CA3AF] uppercase tracking-wider mt-1">Managed Ports</p>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="300">
+        <h3 class="text-4xl font-heading text-[#10B981] font-medium">50+</h3>
+        <p class="text-xs text-[#9CA3AF] uppercase tracking-wider mt-1">Municipal Pilots</p>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="400">
+        <h3 class="text-4xl font-heading text-[#10B981] font-medium">500K+</h3>
+        <p class="text-xs text-[#9CA3AF] uppercase tracking-wider mt-1">Sessions Completed</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Fleet Transition Roadmap -->
+  <section class="py-24 bg-[#0B0F19] relative">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="text-center space-y-3 mb-16" data-aos="fade-up">
+        <span class="text-xs uppercase tracking-widest text-[#06B6D4] font-heading">Electrification Plan</span>
+        <h2 class="text-3xl md:text-4xl font-heading">Fleet Transition Roadmap</h2>
+        <p class="text-[#9CA3AF] max-w-xl mx-auto">Our structured framework guarantees a seamless transition from diesel or gasoline to electric fleet operations.</p>
+      </div>
+
+      <!-- Timeline Wrapper -->
+      <div class="relative flex flex-col items-center space-y-12">
+        <!-- Node 1 -->
+        <div class="relative w-full flex flex-col items-center text-center max-w-xl mx-auto space-y-3" data-aos="fade-up">
+          <span class="px-3 py-1 rounded-full bg-[#10B981]/20 text-[#10B981] text-xs font-heading">Step 1</span>
+          <h3 class="text-xl font-heading">Feasibility & Audit</h3>
+          <p class="text-sm text-[#D1D5DB]">We assess depot power limits, daily fleet mileage, and utility grids to design a custom charging configuration.</p>
+        </div>
+
+        <!-- Node 2 -->
+        <div class="relative w-full flex flex-col items-center text-center max-w-xl mx-auto space-y-3" data-aos="fade-up" data-aos-delay="100">
+          <span class="px-3 py-1 rounded-full bg-[#10B981]/20 text-[#10B981] text-xs font-heading">Step 2</span>
+          <h3 class="text-xl font-heading">Infrastructure Design</h3>
+          <p class="text-sm text-[#D1D5DB]">Engineering site schematics, choosing AC vs DC hardware, and submitting building permits to local agencies.</p>
+        </div>
+
+        <!-- Node 3 -->
+        <div class="relative w-full flex flex-col items-center text-center max-w-xl mx-auto space-y-3" data-aos="fade-up" data-aos-delay="200">
+          <span class="px-3 py-1 rounded-full bg-[#10B981]/20 text-[#10B981] text-xs font-heading">Step 3</span>
+          <h3 class="text-xl font-heading">Installation & Connect</h3>
+          <p class="text-sm text-[#D1D5DB]">Deploying chargers, grid transformers, and sub-panels safely with our network of certified electrical contractors.</p>
+        </div>
+
+        <!-- Node 4 -->
+        <div class="relative w-full flex flex-col items-center text-center max-w-xl mx-auto space-y-3" data-aos="fade-up" data-aos-delay="300">
+          <span class="px-3 py-1 rounded-full bg-[#10B981]/20 text-[#10B981] text-xs font-heading">Step 4</span>
+          <h3 class="text-xl font-heading">Software Activation</h3>
+          <p class="text-sm text-[#D1D5DB]">Connecting chargers to the EV Fleet cloud dashboard, configuring dynamic load limits and user access RFID cards.</p>
+        </div>
+
+        <!-- Node 5 -->
+        <div class="relative w-full flex flex-col items-center text-center max-w-xl mx-auto space-y-3" data-aos="fade-up" data-aos-delay="400">
+          <span class="px-3 py-1 rounded-full bg-[#10B981]/20 text-[#10B981] text-xs font-heading">Step 5</span>
+          <h3 class="text-xl font-heading">Optimization & ESG</h3>
+          <p class="text-sm text-[#D1D5DB]">Analyzing session logs to trim peak energy tariffs, exporting carbon credit offsets, and scaling charging terminals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Depot Consulting Services -->
+  <section class="py-24 bg-[#0B0F19]">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="text-center space-y-3 mb-16" data-aos="fade-up">
+        <span class="text-xs uppercase tracking-widest text-[#06B6D4] font-heading">Expert Advisory</span>
+        <h2 class="text-3xl md:text-4xl font-heading">Depot Consulting Services</h2>
+        <p class="text-[#9CA3AF] max-w-xl mx-auto">Work with our electrical engineers to conduct grid capacity analyses and secure federal electrification grants.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
+        <!-- Coach Card 1 -->
+        <div
+          class="glass-panel p-6 rounded-2xl space-y-4 hover:border-gray-700 transition-all flex flex-col justify-between"
+          data-aos="fade-up" data-aos-delay="100">
+          <div class="space-y-4">
+            <div class="h-40 w-full rounded-xl overflow-hidden border border-gray-800">
+              <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80" alt="Site Assessment"
+                class="w-full h-full object-cover">
+            </div>
+            <h4 class="text-lg font-heading">Site Assessment</h4>
+            <p class="text-sm text-[#9CA3AF]">Custom grid capability audits and site electrical schematics tailored to your depot requirements.</p>
+          </div>
+          <a href="coaching.html" class="text-xs text-[#10B981] hover:underline flex items-center gap-1 mt-4">Learn more
+            <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+
+        <!-- Coach Card 2 -->
+        <div
+          class="glass-panel p-6 rounded-2xl space-y-4 hover:border-gray-700 transition-all flex flex-col justify-between"
+          data-aos="fade-up" data-aos-delay="200">
+          <div class="space-y-4">
+            <div class="h-40 w-full rounded-xl overflow-hidden border border-gray-800">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Utility Negotiation"
+                class="w-full h-full object-cover">
+            </div>
+            <h4 class="text-lg font-heading">Utility Negotiation</h4>
+            <p class="text-sm text-[#9CA3AF]">We collaborate with local power companies to secure commercial charging tariffs and load limits.</p>
+          </div>
+          <a href="coaching.html" class="text-xs text-[#06B6D4] hover:underline flex items-center gap-1 mt-4">Learn more
+            <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+
+        <!-- Coach Card 3 -->
+        <div
+          class="glass-panel p-6 rounded-2xl space-y-4 hover:border-gray-700 transition-all flex flex-col justify-between"
+          data-aos="fade-up" data-aos-delay="300">
+          <div class="space-y-4">
+            <div class="h-40 w-full rounded-xl overflow-hidden border border-gray-800">
+              <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Grant Advisory"
+                class="w-full h-full object-cover">
+            </div>
+            <h4 class="text-lg font-heading">Grant Advisory</h4>
+            <p class="text-sm text-[#9CA3AF]">Expert support in filing federal NEVI and municipal clean air incentive applications.</p>
+          </div>
+          <a href="coaching.html" class="text-xs text-[#F59E0B] hover:underline flex items-center gap-1 mt-4">Learn more
+            <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+
+        <!-- Coach Card 4 -->
+        <div
+          class="glass-panel p-6 rounded-2xl space-y-4 hover:border-gray-700 transition-all flex flex-col justify-between"
+          data-aos="fade-up" data-aos-delay="400">
+          <div class="space-y-4">
+            <div class="h-40 w-full rounded-xl overflow-hidden border border-gray-800">
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Hardware Sourcing"
+                class="w-full h-full object-cover">
+            </div>
+            <h4 class="text-lg font-heading">Hardware Sourcing</h4>
+            <p class="text-sm text-[#9CA3AF]">Procuring Buy America-compliant hardware from premier charger manufacturers at fleet scale.</p>
+          </div>
+          <a href="coaching.html" class="text-xs text-[#10B981] hover:underline flex items-center gap-1 mt-4">Learn more
+            <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Case Studies -->
+  <section class="py-24 bg-[#111827]/40 border-y border-gray-800">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-[#06B6D4] font-heading">Depot Deployments</span>
+          <h2 class="text-3xl md:text-4xl font-heading mt-2">Fleet Case Studies</h2>
+        </div>
+        <a href="community.html"
+          class="px-6 py-2 rounded-full border border-gray-800 hover:border-gray-600 transition-colors text-sm">
+          View All Pilots
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Event Card 1 -->
+        <div class="glass-panel rounded-2xl overflow-hidden grid xl:grid-cols-12 glass-card-hover" data-aos="fade-up">
+          <div class="xl:col-span-5 h-48 xl:h-auto relative">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Logistics Depot Hub"
+              class="w-full h-full object-cover">
+          </div>
+          <div class="xl:col-span-7 p-6 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-xs text-[#10B981] font-medium uppercase tracking-wider">Logistics Pilot</span>
+              <h3 class="text-xl font-heading mt-1">Logistics Hub Integration</h3>
+              <p class="text-xs text-[#9CA3AF] mt-1"><i class="fa-regular fa-calendar mr-2"></i>June 2026</p>
+              <p class="text-sm text-[#D1D5DB] mt-2">Deploying 45 smart Level 2 chargers and 4 DC Fast chargers for a regional postal delivery depot, tracking dynamic grid load.</p>
+            </div>
+            <a href="community.html" class="text-sm text-[#06B6D4] hover:underline flex items-center gap-1">Read Case Study <i class="fa-solid fa-chevron-right text-xs"></i></a>
+          </div>
+        </div>
+
+        <!-- Event Card 2 -->
+        <div class="glass-panel rounded-2xl overflow-hidden grid xl:grid-cols-12 glass-card-hover" data-aos="fade-up"
+          data-aos-delay="200">
+          <div class="xl:col-span-5 h-48 xl:h-auto relative">
+            <img src="https://images.unsplash.com/photo-1463780324318-d1a8ddc05a11?auto=format&fit=crop&w=600&q=80" alt="Municipal Transit Hub"
+              class="w-full h-full object-cover">
+          </div>
+          <div class="xl:col-span-7 p-6 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-xs text-[#06B6D4] font-medium uppercase tracking-wider">Municipal Hub</span>
+              <h3 class="text-xl font-heading mt-1">Municipal Transit Hub</h3>
+              <p class="text-xs text-[#9CA3AF] mt-1"><i class="fa-regular fa-calendar mr-2"></i>July 2026</p>
+              <p class="text-sm text-[#D1D5DB] mt-2">Partnering with the city transit authority to electrify public bus loops using dynamic load balancing and overhead chargers.</p>
+            </div>
+            <a href="community.html" class="text-sm text-[#10B981] hover:underline flex items-center gap-1">Read Case Study
+              <i class="fa-solid fa-chevron-right text-xs"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Testimonials (Bootstrap Carousel inside Glass Panel) -->
+  <section class="py-24 bg-[#0B0F19]">
+    <div class="container max-w-3xl mx-auto px-4 text-center">
+      <span class="text-xs uppercase tracking-widest text-[#06B6D4] font-heading mb-3 block">Success Stories</span>
+
+      <!-- Bootstrap Carousel Glass Box -->
+      <div id="testimonialCarousel" class="carousel slide glass-panel p-8 md:p-12 rounded-3xl" data-bs-ride="carousel"
+        data-aos="zoom-in">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <p class="text-lg md:text-xl text-[#D1D5DB] font-light italic">
+              "EV Fleet completely transformed how we manage energy bills. The session reports on the manager dashboard let us trace power demand and shave peak demand charges across multiple depots."
+            </p>
+            <div class="mt-6 flex flex-col items-center">
+              <h5 class="text-[#F3F4F6] font-heading font-medium">Marcus Chen</h5>
+              <p class="text-xs text-[#9CA3AF]">Fleet Logistics Director • Apex Express</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <p class="text-lg md:text-xl text-[#D1D5DB] font-light italic">
+              "The infrastructure team here is outstanding. From customized grid assessment blueprints to responsive dashboard APIs, they made our 150-vehicle transit transition painless."
+            </p>
+            <div class="mt-6 flex flex-col items-center">
+              <h5 class="text-[#F3F4F6] font-heading font-medium">Elena Rostova</h5>
+              <p class="text-xs text-[#9CA3AF]">Director of Transit • City Municipal Authority</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <i class="fa-solid fa-chevron-left text-xl text-gray-500 hover:text-white"></i>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <i class="fa-solid fa-chevron-right text-xl text-gray-500 hover:text-white"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Partners (Infinite Logo Marquee) -->
+  <section class="py-12 bg-[#111827]/20 border-y border-gray-800 overflow-hidden">
+    <div class="w-full flex items-center relative">
+      <div class="animate-marquee gap-16 items-center">
+        <!-- Logo items -->
+        <span class="text-lg tracking-widest text-[#9CA3AF] uppercase font-heading flex items-center gap-2"><i
+            class="fa-solid fa-tower-cell"></i> SIEMENS GRID</span>
+        <span class="text-lg tracking-widest text-[#9CA3AF] uppercase font-heading flex items-center gap-2"><i
+            class="fa-solid fa-charging-station"></i> CHARGEPOINT</span>
+        <span class="text-lg tracking-widest text-[#9CA3AF] uppercase font-heading flex items-center gap-2"><i
+            class="fa-solid fa-car-side"></i> FORD PRO</span>
+        <span class="text-lg tracking-widest text-[#9CA3AF] uppercase font-heading flex items-center gap-2"><i
+            class="fa-solid fa-plug"></i> ABB ENERGY</span>
+        <span class="text-lg tracking-widest text-[#9CA3AF] uppercase font-heading flex items-center gap-2"><i
+            class="fa-solid fa-bolt-lightning"></i> TESLA ENERGY</span>
+
+        <!-- Duplicated for loop seamlessness -->
+        <span class="text-lg tracking-widest text-[#9CA3AF] uppercase font-heading flex items-center gap-2"><i
+            class="fa-solid fa-tower-cell"></i> SIEMENS GRID</span>
+        <span class="text-lg tracking-widest text-[#9CA3AF] uppercase font-heading flex items-center gap-2"><i
+            class="fa-solid fa-charging-station"></i> CHARGEPOINT</span>
+        <span class="text-lg tracking-widest text-[#9CA3AF] uppercase font-heading flex items-center gap-2"><i
+            class="fa-solid fa-car-side"></i> FORD PRO</span>
+        <span class="text-lg tracking-widest text-[#9CA3AF] uppercase font-heading flex items-center gap-2"><i
+            class="fa-solid fa-plug"></i> ABB ENERGY</span>
+        <span class="text-lg tracking-widest text-[#9CA3AF] uppercase font-heading flex items-center gap-2"><i
+            class="fa-solid fa-bolt-lightning"></i> TESLA ENERGY</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Newsletter -->
+  <section class="py-24 bg-[#0B0F19]">
+    <div class="container max-w-4xl mx-auto px-4">
+      <div class="glass-panel p-8 md:p-12 rounded-3xl text-center space-y-6 relative overflow-hidden"
+        data-aos="fade-up">
+        <div class="bg-gradient-orb orb-primary -top-20 -left-20"></div>
+        <span class="text-xs uppercase tracking-widest text-[#06B6D4] font-heading">Stay Updated</span>
+        <h2 class="text-3xl font-heading">Receive Grid & Fleet Insights</h2>
+        <p class="text-[#9CA3AF] max-w-md mx-auto text-sm">Subscribe for industry whitepapers, smart charging software release updates, and municipal grid incentive notices.</p>
+
+        <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto relative z-10"
+          onsubmit="event.preventDefault(); alert('Subscribed to EV Fleet insights!');">
+          <input type="email" placeholder="Your corporate email address" required
+            class="flex-1 px-5 py-3 rounded-full bg-[#0B0F19]/80 border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-[#06B6D4] transition-all">
+          <button type="submit"
+            class="px-8 py-3 rounded-full bg-[#10B981] text-white hover:bg-[#10B981]/90 transition-all font-medium whitespace-nowrap">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#0B0F19] border-t border-gray-900 pt-16 pb-12 text-sm text-[#9CA3AF]">
+    <div class="container max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+      <!-- Brand column -->
+      <div class="md:col-span-4 space-y-4">
+        <a class="flex items-center gap-2 text-[#F3F4F6] text-xl font-heading tracking-wider" href="index.html">
+          <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
+          <span>EV <span class="text-[#10B981] font-medium">FLEET</span></span>
+        </a>
+        <p class="text-xs leading-relaxed text-[#9CA3AF] max-w-sm">
+          EV Fleet delivers hardware, cloud-based load management, and fleet portal tracking to power zero-emission logistics and transit fleets.
+        </p>
+        <div class="flex gap-3 pt-2">
+          <a href="#" class="social-icon-btn instagram" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="social-icon-btn youtube" title="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="#" class="social-icon-btn facebook" title="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon-btn tiktok" title="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links Column 1: Explore -->
+      <div class="md:col-span-2 space-y-3">
+        <h5 class="text-[#F3F4F6] font-heading font-medium text-xs uppercase tracking-widest">Explore</h5>
+        <ul class="space-y-2 text-xs">
+          <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+          <li><a href="home2.html" class="hover:text-white transition-colors">Home 2</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+          <li><a href="programs.html" class="hover:text-white transition-colors">Solutions</a></li>
+          <li><a href="coaching.html" class="hover:text-white transition-colors">Consulting</a></li>
+          <li><a href="community.html" class="hover:text-white transition-colors">Partnerships</a></li>
+        </ul>
+      </div>
+
+      <!-- Links Column 2: Fleet Portal -->
+      <div class="md:col-span-2 space-y-3">
+        <h5 class="text-[#F3F4F6] font-heading font-medium text-xs uppercase tracking-widest">Fleet Portal</h5>
+        <ul class="space-y-2 text-xs">
+          <li><a href="dashboard.html" class="hover:text-white transition-colors">Dashboard</a></li>
+          <li><a href="login.html" class="hover:text-white transition-colors">Log In</a></li>
+          <li><a href="register.html" class="hover:text-white transition-colors">Sign Up</a></li>
+        </ul>
+      </div>
+
+      <!-- Links Column 3: Contact & Info -->
+      <div class="md:col-span-4 space-y-3">
+        <h5 class="text-[#F3F4F6] font-heading font-medium text-xs uppercase tracking-widest">Headquarters</h5>
+        <p class="text-xs leading-relaxed text-[#9CA3AF]">
+          100 Energy Way, Suite 400,<br>Denver, CO 80202
+        </p>
+        <p class="text-xs text-[#9CA3AF] pt-1">
+          <i class="fa-solid fa-envelope mr-1.5 text-gray-500"></i>sales@evfleetcharging.com<br>
+          <i class="fa-solid fa-phone mr-1.5 text-gray-500"></i>(800) 555-0122
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div
+      class="container max-w-7xl mx-auto px-4 pt-6 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+      <p class="text-[#6B7280]">&copy; 2026 EV Fleet Charging Solutions. Powering Zero-Emission Transit.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-[#F3F4F6] text-gray-500 transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-[#F3F4F6] text-gray-500 transition-colors">Service Agreement</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Button (Back to Top) -->
+  <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">
+    <i class="fa-solid fa-angle-up text-lg"></i>
+  </button>
+
+  <!-- JS Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({
+        duration: 800,
+        once: true
+      });
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
