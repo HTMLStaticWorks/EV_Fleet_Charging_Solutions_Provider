@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solutions - EV Fleet</title>
-  <meta name="description" content="Discover EV Fleet charging programs: logistics depots, municipal public transit, grid load management, and DC Fast charging.">
+  <meta name="description"
+    content="Discover EV Fleet charging programs: logistics depots, municipal public transit, grid load management, and DC Fast charging.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -41,6 +43,7 @@
     }
   </style>
 </head>
+
 <body class="bg-[#0B0F19] text-[#F3F4F6]">
 
   <!-- Scroll Progress -->
@@ -57,7 +60,7 @@
       <div class="hidden lg:flex items-center gap-8">
         <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="index.html">Home</a>
         <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="home2.html">Home 2</a>
-        
+
         <a class="text-[#D1D5DB] hover:text-[#06B6D4] transition-colors" href="about.html">About</a>
         <a class="text-[#F3F4F6] hover:text-[#06B6D4] transition-colors" href="programs.html">Solutions</a>
 
@@ -69,13 +72,18 @@
       </div>
 
       <div class="hidden lg:flex items-center gap-4">
-        <button id="rtl-toggle" class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors" title="Toggle RTL">
+        <button id="rtl-toggle"
+          class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors"
+          title="Toggle RTL">
           <i id="rtl-icon" class="fa-solid fa-right-left text-lg text-gray-300"></i>
         </button>
-        <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors" title="Toggle Theme">
+        <button id="theme-toggle"
+          class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors"
+          title="Toggle Theme">
           <i id="theme-icon" class="fa-regular fa-sun text-[#F59E0B] text-lg"></i>
         </button>
-        <a href="register.html" class="px-5 py-2 rounded-full border border-[#10B981] bg-[#10B981]/10 text-[#F3F4F6] hover:bg-[#10B981] transition-all duration-300 font-medium text-sm">
+        <a href="register.html"
+          class="px-5 py-2 rounded-full border border-[#10B981] bg-[#10B981]/10 text-[#F3F4F6] hover:bg-[#10B981] transition-all duration-300 font-medium text-sm">
           Sign Up
         </a>
       </div>
@@ -87,7 +95,8 @@
   </nav>
 
   <!-- Mobile Dropdown Navigation -->
-  <div id="mobile-menu" class="hidden fixed top-[70px] left-0 w-full glass-panel py-6 px-4 z-40 lg:hidden flex flex-col gap-4">
+  <div id="mobile-menu"
+    class="hidden fixed top-[70px] left-0 w-full glass-panel py-6 px-4 z-40 lg:hidden flex flex-col gap-4">
     <a class="text-lg text-[#D1D5DB]" href="index.html">Home</a>
     <a class="text-lg text-[#D1D5DB]" href="home2.html">Home 2</a>
     <a class="text-lg text-[#D1D5DB]" href="about.html">About</a>
@@ -99,14 +108,17 @@
     <a class="text-lg text-[#D1D5DB]" href="dashboard.html">Dashboard</a>
     <div class="h-[1px] bg-gray-800 my-2"></div>
     <div class="flex justify-center items-center gap-4 py-2">
-      <button id="rtl-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors">
+      <button id="rtl-toggle-mobile"
+        class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors">
         <i class="fa-solid fa-right-left text-lg text-gray-300"></i>
       </button>
-      <button id="theme-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors">
+      <button id="theme-toggle-mobile"
+        class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-800 hover:bg-gray-800 transition-colors">
         <i id="theme-icon-mobile" class="fa-regular fa-sun text-[#F59E0B] text-lg"></i>
       </button>
     </div>
-    <a href="register.html" class="w-full text-center py-3 rounded-xl bg-[#10B981] text-white hover:bg-opacity-95 transition-all">
+    <a href="register.html"
+      class="w-full text-center py-3 rounded-xl bg-[#10B981] text-white hover:bg-opacity-95 transition-all">
       Sign Up
     </a>
   </div>
@@ -115,19 +127,20 @@
   <header class="pt-32 pb-16 relative overflow-hidden">
     <div class="bg-gradient-orb orb-primary -top-12 -left-12"></div>
     <div class="bg-gradient-orb orb-secondary -bottom-12 -right-12"></div>
-    
-    <div class="container max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-center relative z-10">
-      <div class="md:col-span-7 space-y-4 text-left" data-aos="fade-right">
-        <span class="text-xs text-[#06B6D4] uppercase tracking-widest font-heading font-medium">EV Fleet Formats</span>
-        <h1 class="text-4xl md:text-5xl font-heading leading-tight">Depot Electrification Solutions</h1>
-        <p class="text-[#D1D5DB] text-sm leading-relaxed max-w-xl">
-          Explore our structured programs designed to take you from initial grid assessments to high-performance active depot operations. We integrate dynamic energy controls, OCPP charger systems, and real-time dashboard telemetry.
-        </p>
-      </div>
-      <div class="md:col-span-5" data-aos="fade-left">
-        <div class="relative p-2 glass-panel rounded-3xl overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80" alt="EV Charging infrastructure details" class="rounded-2xl w-full h-72 object-cover">
-        </div>
+
+    <div class="container max-w-3xl mx-auto px-4 text-center space-y-4 relative z-10" data-aos="fade-up">
+      <span class="text-xs text-[#06B6D4] uppercase tracking-widest font-heading font-medium block">EV Fleet
+        Formats</span>
+      <h1 class="text-4xl md:text-5xl font-heading leading-tight mx-auto">Depot Electrification Solutions</h1>
+      <p class="text-[#D1D5DB] text-sm leading-relaxed max-w-xl mx-auto">
+        Explore our structured programs designed to take you from initial grid assessments to high-performance active
+        depot operations. We integrate dynamic energy controls, OCPP charger systems, and real-time dashboard telemetry.
+      </p>
+      <div class="flex justify-center gap-3 pt-2">
+        <a href="#contact-section"
+          class="px-8 py-3 rounded-full bg-[#10B981] text-white glow-btn-primary hover:bg-[#10B981]/90 transition-all font-medium text-center w-full sm:w-auto">
+          Programs
+        </a>
       </div>
     </div>
   </header>
@@ -135,25 +148,32 @@
   <!-- Program Tab Switcher Bar -->
   <div class="sticky top-[72px] bg-[#0B0F19] py-4 border-b border-gray-900 z-30">
     <div class="container max-w-4xl mx-auto px-4 flex justify-between gap-2 overflow-x-auto">
-      <button onclick="switchTab('logistics')" id="btn-logistics" class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap active">
+      <button onclick="switchTab('logistics')" id="btn-logistics"
+        class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap active">
         Logistics
       </button>
-      <button onclick="switchTab('municipal')" id="btn-municipal" class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
+      <button onclick="switchTab('municipal')" id="btn-municipal"
+        class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
         Municipal
       </button>
-      <button onclick="switchTab('smartload')" id="btn-smartload" class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
+      <button onclick="switchTab('smartload')" id="btn-smartload"
+        class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
         Smart Load
       </button>
-      <button onclick="switchTab('fastcharge')" id="btn-fastcharge" class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
+      <button onclick="switchTab('fastcharge')" id="btn-fastcharge"
+        class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
         Fast Charging
       </button>
-      <button onclick="switchTab('rfidcontrol')" id="btn-rfidcontrol" class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
+      <button onclick="switchTab('rfidcontrol')" id="btn-rfidcontrol"
+        class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
         RFID Control
       </button>
-      <button onclick="switchTab('carbonoffset')" id="btn-carbonoffset" class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
+      <button onclick="switchTab('carbonoffset')" id="btn-carbonoffset"
+        class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
         Carbon Offset
       </button>
-      <button onclick="switchTab('support')" id="btn-support" class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
+      <button onclick="switchTab('support')" id="btn-support"
+        class="program-tab-btn flex-1 py-3 px-4 rounded-xl border border-gray-800 text-center font-heading text-xs uppercase tracking-wider transition-all whitespace-nowrap">
         Grid Support
       </button>
     </div>
@@ -170,11 +190,13 @@
           <span class="text-xs text-[#06B6D4] uppercase tracking-widest font-heading">High-Volume Depot Solutions</span>
           <h2 class="text-3xl font-heading">Logistics Depot Electrification</h2>
           <p class="text-[#D1D5DB] text-sm">
-            Optimize scheduling, driver safety protocols, and Level 2 AC chargers configured specifically for parcel and cargo delivery depots.
+            Optimize scheduling, driver safety protocols, and Level 2 AC chargers configured specifically for parcel and
+            cargo delivery depots.
           </p>
         </div>
         <div class="md:col-span-5">
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=500&q=80" alt="Logistics delivery depot van" class="rounded-2xl w-full h-48 object-cover">
+          <img src="https://www.electrive.com/media/2020/12/hamburger-hochbahn-busdepot-elektrobus-electric-bus-2020-01-min.png"
+            alt="Logistics delivery depot van" class="rounded-2xl w-full h-60 object-cover">
         </div>
       </section>
 
@@ -183,17 +205,20 @@
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-truck text-[#10B981] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Depot Configuration</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Custom spatial designs, safe wiring layout, and OCPP smart charger placements.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Custom spatial designs, safe wiring layout, and OCPP smart charger
+            placements.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-clock text-[#06B6D4] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Night Charging</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Throttling charger outputs during off-peak night rate hours for maximum savings.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Throttling charger outputs during off-peak night rate hours for maximum
+            savings.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-microchip text-[#F59E0B] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Fleet Software</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Real-time battery SOC tracking and charger status updates on a unified portal.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Real-time battery SOC tracking and charger status updates on a unified
+            portal.</p>
         </div>
       </div>
 
@@ -201,21 +226,299 @@
       <div class="glass-panel p-8 rounded-3xl max-w-md mx-auto text-center space-y-4">
         <h4 class="text-xl font-heading">Logistics Starter Package</h4>
         <p class="text-2xl font-heading text-[#10B981]">$249<span class="text-xs text-[#9CA3AF]">/month</span></p>
-        <p class="text-xs text-[#9CA3AF]">Includes 5 managed AC charging ports, dashboard integration, and 24/7 telemetry support.</p>
-        <a href="register.html" class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Get Logistics Consultation</a>
+        <p class="text-xs text-[#9CA3AF]">Includes 5 managed AC charging ports, dashboard integration, and 24/7
+          telemetry support.</p>
+        <a href="register.html" class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Get
+          Logistics Consultation</a>
       </div>
 
       <!-- FAQs -->
-      <div class="max-w-2xl mx-auto space-y-4">
-        <h4 class="text-center font-heading text-xl">Logistics FAQs</h4>
-        <div class="glass-panel p-4 rounded-xl space-y-2">
-          <p class="font-heading text-sm text-[#F3F4F6]"><i class="fa-solid fa-circle-question mr-2 text-[#10B981]"></i>Can I mix different vehicle brands?</p>
-          <p class="text-xs text-[#9CA3AF] pl-6">Yes, EV Fleet uses universal J1772, CCS, and NACS connector standards to support all vehicle manufacturers.</p>
+      <div class="max-w-2xl mx-auto space-y-3">
+        <h4 class="text-center font-heading text-xl mb-6">Logistics FAQs</h4>
+
+        <!-- FAQ styles injected inline for self-containment -->
+        <style>
+          .faq-item {
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.25s, box-shadow 0.25s;
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(12px);
+          }
+
+          .faq-item:hover {
+            border-color: rgba(16, 185, 129, 0.45);
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.12);
+          }
+
+          .faq-item.faq-open {
+            border-color: rgba(16, 185, 129, 0.6);
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.18);
+          }
+
+          .faq-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 18px 20px;
+            background: transparent;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s;
+          }
+
+          .faq-btn:hover {
+            background: rgba(16, 185, 129, 0.07);
+          }
+
+          .faq-open .faq-btn {
+            background: rgba(16, 185, 129, 0.10);
+          }
+
+          .faq-question {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.875rem;
+            color: #F3F4F6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.2s;
+          }
+
+          .faq-btn:hover .faq-question,
+          .faq-open .faq-question {
+            color: #10B981;
+          }
+
+          .faq-icon {
+            color: #10B981;
+            font-size: 1rem;
+            flex-shrink: 0;
+            transition: color 0.2s;
+          }
+
+          .faq-btn:hover .faq-icon,
+          .faq-open .faq-icon {
+            color: #06B6D4;
+          }
+
+          .faq-chevron {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #9CA3AF;
+            transition: transform 0.3s ease, color 0.2s, background 0.2s, border-color 0.2s;
+          }
+
+          .faq-btn:hover .faq-chevron {
+            color: #10B981;
+            border-color: #10B981;
+            background: rgba(16, 185, 129, 0.1);
+          }
+
+          .faq-open .faq-chevron {
+            transform: rotate(180deg);
+            color: #10B981;
+            border-color: #10B981;
+            background: rgba(16, 185, 129, 0.15);
+          }
+
+          .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.25s ease;
+          }
+
+          .faq-open .faq-body {
+            max-height: 300px;
+          }
+
+          .faq-answer {
+            padding: 0 20px 18px 44px;
+            font-size: 0.78rem;
+            color: #9CA3AF;
+            line-height: 1.65;
+            transition: color 0.2s;
+          }
+
+          .faq-open .faq-answer {
+            color: #D1D5DB;
+          }
+
+          /* ── Light Mode Overrides ── */
+          [data-theme="light"] .faq-item {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+          }
+
+          [data-theme="light"] .faq-item:hover {
+            border-color: rgba(5, 150, 105, 0.5);
+            box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.14);
+          }
+
+          [data-theme="light"] .faq-item.faq-open {
+            border-color: rgba(5, 150, 105, 0.65);
+            box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.2);
+          }
+
+          [data-theme="light"] .faq-btn:hover {
+            background: rgba(5, 150, 105, 0.07);
+          }
+
+          [data-theme="light"] .faq-open .faq-btn {
+            background: rgba(5, 150, 105, 0.09);
+          }
+
+          [data-theme="light"] .faq-question {
+            color: #111827;
+          }
+
+          [data-theme="light"] .faq-btn:hover .faq-question,
+          [data-theme="light"] .faq-open .faq-question {
+            color: #059669;
+          }
+
+          [data-theme="light"] .faq-icon {
+            color: #059669;
+          }
+
+          [data-theme="light"] .faq-btn:hover .faq-icon,
+          [data-theme="light"] .faq-open .faq-icon {
+            color: #0891B2;
+          }
+
+          [data-theme="light"] .faq-chevron {
+            border-color: rgba(5, 150, 105, 0.35);
+            color: #6B7280;
+          }
+
+          [data-theme="light"] .faq-btn:hover .faq-chevron {
+            color: #059669;
+            border-color: #059669;
+            background: rgba(5, 150, 105, 0.1);
+          }
+
+          [data-theme="light"] .faq-open .faq-chevron {
+            color: #059669;
+            border-color: #059669;
+            background: rgba(5, 150, 105, 0.14);
+          }
+
+          [data-theme="light"] .faq-answer {
+            color: #6B7280;
+          }
+
+          [data-theme="light"] .faq-open .faq-answer {
+            color: #374151;
+          }
+        </style>
+
+        <!-- Q1 -->
+        <div class="faq-item" id="faq-1">
+          <button class="faq-btn" onclick="toggleFaq('faq-1')" aria-expanded="false">
+            <span class="faq-question">
+              <i class="fa-solid fa-bolt-lightning faq-icon"></i>
+              Can I mix different EV brands in one depot?
+            </span>
+            <span class="faq-chevron"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+          </button>
+          <div class="faq-body">
+            <p class="faq-answer">Yes — EV Fleet supports universal J1772, CCS, and NACS connector standards. Our
+              OCPP-based management layer handles mixed-brand fleets seamlessly, giving you a single dashboard
+              regardless of vehicle manufacturer.</p>
+          </div>
         </div>
-        <div class="glass-panel p-4 rounded-xl space-y-2">
-          <p class="font-heading text-sm text-[#F3F4F6]"><i class="fa-solid fa-circle-question mr-2 text-[#10B981]"></i>What if our depot has limited grid power?</p>
-          <p class="text-xs text-[#9CA3AF] pl-6">Our dynamic load management algorithms balance power distribution across chargers, avoiding the need for expensive utility transformer upgrades.</p>
+
+        <!-- Q2 -->
+        <div class="faq-item" id="faq-2">
+          <button class="faq-btn" onclick="toggleFaq('faq-2')" aria-expanded="false">
+            <span class="faq-question">
+              <i class="fa-solid fa-bolt-lightning faq-icon"></i>
+              What if our depot has limited grid power?
+            </span>
+            <span class="faq-chevron"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+          </button>
+          <div class="faq-body">
+            <p class="faq-answer">Our dynamic load management algorithms intelligently balance power across all
+              chargers, prioritizing vehicles by departure schedule. This avoids costly utility transformer upgrades in
+              most cases.</p>
+          </div>
         </div>
+
+        <!-- Q3 -->
+        <div class="faq-item" id="faq-3">
+          <button class="faq-btn" onclick="toggleFaq('faq-3')" aria-expanded="false">
+            <span class="faq-question">
+              <i class="fa-solid fa-bolt-lightning faq-icon"></i>
+              How long does depot installation typically take?
+            </span>
+            <span class="faq-chevron"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+          </button>
+          <div class="faq-body">
+            <p class="faq-answer">A standard 5–10 charger depot installation takes 3–5 business days after permit
+              approval. Our team manages the utility application, sub-panel design, and commissioning end-to-end so your
+              operations face minimal disruption.</p>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item" id="faq-4">
+          <button class="faq-btn" onclick="toggleFaq('faq-4')" aria-expanded="false">
+            <span class="faq-question">
+              <i class="fa-solid fa-bolt-lightning faq-icon"></i>
+              Are there federal incentives available for logistics fleets?
+            </span>
+            <span class="faq-chevron"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+          </button>
+          <div class="faq-body">
+            <p class="faq-answer">Yes — logistics fleets may qualify for NEVI funding, IRS Section 30C tax credits, and
+              state-level clean air grants. Our consultants guide you through eligibility checks and application
+              paperwork at no additional cost.</p>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="faq-item" id="faq-5">
+          <button class="faq-btn" onclick="toggleFaq('faq-5')" aria-expanded="false">
+            <span class="faq-question">
+              <i class="fa-solid fa-bolt-lightning faq-icon"></i>
+              Can the system scale as our fleet grows?
+            </span>
+            <span class="faq-chevron"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+          </button>
+          <div class="faq-body">
+            <p class="faq-answer">Absolutely. EV Fleet's modular architecture allows you to add chargers incrementally.
+              The cloud portal auto-discovers new units and integrates them into your existing load-balancing rules
+              within minutes of installation.</p>
+          </div>
+        </div>
+
+        <script>
+          function toggleFaq(id) {
+            const item = document.getElementById(id);
+            const isOpen = item.classList.contains('faq-open');
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(el => {
+              el.classList.remove('faq-open');
+              el.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+            });
+            // Open clicked if it was closed
+            if (!isOpen) {
+              item.classList.add('faq-open');
+              item.querySelector('.faq-btn').setAttribute('aria-expanded', 'true');
+            }
+          }
+        </script>
       </div>
     </div>
 
@@ -226,11 +529,13 @@
           <span class="text-xs text-[#10B981] uppercase tracking-widest font-heading">Public Infrastructure</span>
           <h2 class="text-3xl font-heading">Municipal Transit & Utility Hubs</h2>
           <p class="text-[#D1D5DB] text-sm">
-            Tailored transit charging configurations designed for municipal electric buses, clean air initiatives, and public utility fleet hubs.
+            Tailored transit charging configurations designed for municipal electric buses, clean air initiatives, and
+            public utility fleet hubs.
           </p>
         </div>
         <div class="md:col-span-5">
-          <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=500&q=80" alt="Electric municipal transit bus" class="rounded-2xl w-full h-48 object-cover">
+          <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=500&q=80"
+            alt="Electric municipal transit bus" class="rounded-2xl w-full h-48 object-cover">
         </div>
       </section>
 
@@ -239,17 +544,20 @@
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-bus text-[#06B6D4] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Transit Integration</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">High-power overhead pantographs and depot fast chargers for heavy-duty electric buses.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">High-power overhead pantographs and depot fast chargers for heavy-duty
+            electric buses.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-users-gear text-[#10B981] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Public Utility Fleets</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Driver authorization profiles for multi-agency vehicle access and shared costs.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Driver authorization profiles for multi-agency vehicle access and
+            shared costs.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-shield-halved text-[#F59E0B] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Grid Resiliency</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Grid backup integration, microgrid setups, and solar panel connectivity options.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Grid backup integration, microgrid setups, and solar panel connectivity
+            options.</p>
         </div>
       </div>
 
@@ -257,8 +565,11 @@
       <div class="glass-panel p-8 rounded-3xl max-w-md mx-auto text-center space-y-4">
         <h4 class="text-xl font-heading">Municipal Enterprise Tier</h4>
         <p class="text-2xl font-heading text-[#10B981]">$599<span class="text-xs text-[#9CA3AF]">/month</span></p>
-        <p class="text-xs text-[#9CA3AF]">Includes 15 managed ports, microgrid software connectivity, and dedicated local hardware support.</p>
-        <a href="register.html" class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Register Municipal Account</a>
+        <p class="text-xs text-[#9CA3AF]">Includes 15 managed ports, microgrid software connectivity, and dedicated
+          local hardware support.</p>
+        <a href="register.html"
+          class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Register Municipal
+          Account</a>
       </div>
     </div>
 
@@ -269,11 +580,13 @@
           <span class="text-xs text-[#06B6D4] uppercase tracking-widest font-heading">Grid Load Management</span>
           <h2 class="text-3xl font-heading">Active Peak-Shaving Load Balancer</h2>
           <p class="text-[#D1D5DB] text-sm">
-            Intelligent grid management systems that dynamically cap charging rates to prevent high commercial utility demand charges.
+            Intelligent grid management systems that dynamically cap charging rates to prevent high commercial utility
+            demand charges.
           </p>
         </div>
         <div class="md:col-span-5">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" alt="Smart power graph load balancing dashboard" class="rounded-2xl w-full h-48 object-cover">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80"
+            alt="Smart power graph load balancing dashboard" class="rounded-2xl w-full h-48 object-cover">
         </div>
       </section>
 
@@ -282,17 +595,20 @@
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-bolt-lightning text-[#10B981] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Dynamic Capping</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Automatically throttle energy delivery across charger circuits when total depot consumption approaches limits.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Automatically throttle energy delivery across charger circuits when
+            total depot consumption approaches limits.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-battery-full text-[#06B6D4] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Peak Shaving</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Shift heavy charging sessions to midnight hours to avoid utility peak demand charges.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Shift heavy charging sessions to midnight hours to avoid utility peak
+            demand charges.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-plug text-[#F59E0B] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Pre-Conditioning</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Draw energy directly from the grid to heat or cool vehicle cabins before delivery runs, preserving battery range.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Draw energy directly from the grid to heat or cool vehicle cabins
+            before delivery runs, preserving battery range.</p>
         </div>
       </div>
 
@@ -300,8 +616,10 @@
       <div class="glass-panel p-8 rounded-3xl max-w-md mx-auto text-center space-y-4">
         <h4 class="text-xl font-heading">Smart Load Add-on Plan</h4>
         <p class="text-2xl font-heading text-[#10B981]">$89<span class="text-xs text-[#9CA3AF]">/month</span></p>
-        <p class="text-xs text-[#9CA3AF]">Unlocks dynamic load balancer software, custom utility tariff schedules, and email grid notices.</p>
-        <a href="register.html" class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Activate Smart Load</a>
+        <p class="text-xs text-[#9CA3AF]">Unlocks dynamic load balancer software, custom utility tariff schedules, and
+          email grid notices.</p>
+        <a href="register.html"
+          class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Activate Smart Load</a>
       </div>
     </div>
 
@@ -312,11 +630,13 @@
           <span class="text-xs text-[#F59E0B] uppercase tracking-widest font-heading">Rapid Infrastructure</span>
           <h2 class="text-3xl font-heading">DC High-Power Fast Charging</h2>
           <p class="text-[#D1D5DB] text-sm">
-            High-power DC charging cabinets (50kW - 350kW) engineered for short fleet dwell times and transit turnaround lanes.
+            High-power DC charging cabinets (50kW - 350kW) engineered for short fleet dwell times and transit turnaround
+            lanes.
           </p>
         </div>
         <div class="md:col-span-5">
-          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=500&q=80" alt="High power DC charger station" class="rounded-2xl w-full h-48 object-cover">
+          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=500&q=80"
+            alt="High power DC charger station" class="rounded-2xl w-full h-48 object-cover">
         </div>
       </section>
 
@@ -325,17 +645,20 @@
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-gauge-high text-[#10B981] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Speed Charging</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Liquid-cooled cables capable of adding up to 200 miles of battery range in less than 20 minutes.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Liquid-cooled cables capable of adding up to 200 miles of battery range
+            in less than 20 minutes.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-temperature-low text-[#06B6D4] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Thermal Telemetry</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Real-time hardware temperature sensors to regulate charge speed and extend battery life cycles.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Real-time hardware temperature sensors to regulate charge speed and
+            extend battery life cycles.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-truck-fast text-[#F59E0B] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Route Top-Ups</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Strategically located fast chargers configured for mid-day driver dispatch top-ups.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Strategically located fast chargers configured for mid-day driver
+            dispatch top-ups.</p>
         </div>
       </div>
 
@@ -343,8 +666,11 @@
       <div class="glass-panel p-8 rounded-3xl max-w-md mx-auto text-center space-y-4">
         <h4 class="text-xl font-heading">DC Fast Charge Managed Plan</h4>
         <p class="text-2xl font-heading text-[#10B981]">$499<span class="text-xs text-[#9CA3AF]">/month</span></p>
-        <p class="text-xs text-[#9CA3AF]">Includes managed DC fast hardware, priority 2-hour maintenance call response, and dashboard integrations.</p>
-        <a href="register.html" class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Request DC Fast Hardware</a>
+        <p class="text-xs text-[#9CA3AF]">Includes managed DC fast hardware, priority 2-hour maintenance call response,
+          and dashboard integrations.</p>
+        <a href="register.html"
+          class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Request DC Fast
+          Hardware</a>
       </div>
     </div>
 
@@ -356,11 +682,13 @@
           <span class="text-xs text-[#06B6D4] uppercase tracking-widest font-heading">Access Management</span>
           <h2 class="text-3xl font-heading">RFID Access & Driver Security</h2>
           <p class="text-[#D1D5DB] text-sm">
-            Control and track charger access utilizing corporate RFID credentials, driver key fobs, and mobile authorization profiles.
+            Control and track charger access utilizing corporate RFID credentials, driver key fobs, and mobile
+            authorization profiles.
           </p>
         </div>
         <div class="md:col-span-5">
-          <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=500&q=80" alt="RFID credential key access control" class="rounded-2xl w-full h-48 object-cover">
+          <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=500&q=80"
+            alt="RFID credential key access control" class="rounded-2xl w-full h-48 object-cover">
         </div>
       </section>
 
@@ -369,17 +697,20 @@
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-id-card text-[#10B981] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Secure RFID Keys</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Issue dynamic access cards to authorized drivers. Prevent unauthorized charging at public-facing depots.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Issue dynamic access cards to authorized drivers. Prevent unauthorized
+            charging at public-facing depots.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-gears text-[#06B6D4] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Automated Control</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Chargers unlock automatically when a driver scans their key fob, logging session data instantly.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Chargers unlock automatically when a driver scans their key fob,
+            logging session data instantly.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-history text-[#F59E0B] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Access Audit Logs</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Export detailed histories showing exactly who charged, which vehicle, and energy consumed.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Export detailed histories showing exactly who charged, which vehicle,
+            and energy consumed.</p>
         </div>
       </div>
 
@@ -387,8 +718,11 @@
       <div class="glass-panel p-8 rounded-3xl max-w-md mx-auto text-center space-y-4">
         <h4 class="text-xl font-heading">RFID Control Basic</h4>
         <p class="text-2xl font-heading text-[#06B6D4]">$49<span class="text-xs text-[#9CA3AF]">/month</span></p>
-        <p class="text-xs text-[#9CA3AF]">Includes up to 50 active driver RFID cards, portal access manager, and downloadable audit logs.</p>
-        <a href="register.html" class="block w-full py-2.5 rounded-full border border-[#06B6D4] text-[#06B6D4] hover:bg-[#06B6D4]/10 transition-colors text-sm font-medium">Order RFID Package</a>
+        <p class="text-xs text-[#9CA3AF]">Includes up to 50 active driver RFID cards, portal access manager, and
+          downloadable audit logs.</p>
+        <a href="register.html"
+          class="block w-full py-2.5 rounded-full border border-[#06B6D4] text-[#06B6D4] hover:bg-[#06B6D4]/10 transition-colors text-sm font-medium">Order
+          RFID Package</a>
       </div>
     </div>
 
@@ -400,11 +734,13 @@
           <span class="text-xs text-[#10B981] uppercase tracking-widest font-heading">ESG Reporting</span>
           <h2 class="text-3xl font-heading">Carbon Offset & Greenhouse Gas Logs</h2>
           <p class="text-[#D1D5DB] text-sm">
-            Automatically track and compile fuel savings and greenhouse gas offsets to meet corporate sustainability mandates.
+            Automatically track and compile fuel savings and greenhouse gas offsets to meet corporate sustainability
+            mandates.
           </p>
         </div>
         <div class="md:col-span-5">
-          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=500&q=80" alt="Environmental ESG leaf carbon offset" class="rounded-2xl w-full h-48 object-cover">
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=500&q=80"
+            alt="Environmental ESG leaf carbon offset" class="rounded-2xl w-full h-48 object-cover">
         </div>
       </section>
 
@@ -413,17 +749,20 @@
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-leaf text-[#10B981] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Carbon Savings</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Calculate total emissions saved by comparing fleet EV charging (kWh) against standard fuel baselines.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Calculate total emissions saved by comparing fleet EV charging (kWh)
+            against standard fuel baselines.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-file-excel text-[#06B6D4] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">ESG Audit Reports</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Export formatted reports ready to submit for corporate ESG compliance audits and tax incentives.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Export formatted reports ready to submit for corporate ESG compliance
+            audits and tax incentives.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-certificate text-[#F59E0B] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Credit Generation</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Compile logs required to generate clean fuel standards credits (e.g. LCFS credits) to generate revenue.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Compile logs required to generate clean fuel standards credits (e.g.
+            LCFS credits) to generate revenue.</p>
         </div>
       </div>
 
@@ -431,8 +770,10 @@
       <div class="glass-panel p-8 rounded-3xl max-w-md mx-auto text-center space-y-4">
         <h4 class="text-xl font-heading">ESG Reporting Suite</h4>
         <p class="text-2xl font-heading text-[#F59E0B]">$99<span class="text-xs text-[#9CA3AF]">/month</span></p>
-        <p class="text-xs text-[#9CA3AF]">Unlocks carbon offset telemetry, clean fuel credit compiler, and custom ESG spreadsheet exports.</p>
-        <a href="register.html" class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Activate ESG Suite</a>
+        <p class="text-xs text-[#9CA3AF]">Unlocks carbon offset telemetry, clean fuel credit compiler, and custom ESG
+          spreadsheet exports.</p>
+        <a href="register.html"
+          class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Activate ESG Suite</a>
       </div>
     </div>
 
@@ -444,11 +785,13 @@
           <span class="text-xs text-[#06B6D4] uppercase tracking-widest font-heading">Utility Services</span>
           <h2 class="text-3xl font-heading">Grid Capacity & Interconnection Support</h2>
           <p class="text-[#D1D5DB] text-sm">
-            Overcome substation power constraints and grid limits with active utility support, sub-metering, and battery backup systems.
+            Overcome substation power constraints and grid limits with active utility support, sub-metering, and battery
+            backup systems.
           </p>
         </div>
         <div class="md:col-span-5">
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=500&q=80" alt="Server node database integration grid" class="rounded-2xl w-full h-48 object-cover">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=500&q=80"
+            alt="Server node database integration grid" class="rounded-2xl w-full h-48 object-cover">
         </div>
       </section>
 
@@ -457,17 +800,20 @@
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-tower-cell text-[#10B981] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Substation Audits</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Detailed engineering reviews of local distribution grids to plan depot expansion pipelines.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Detailed engineering reviews of local distribution grids to plan depot
+            expansion pipelines.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-battery-full text-[#06B6D4] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">Battery Storage</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Deploy battery storage solutions to store off-peak energy and support fast charging during peak grid hours.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Deploy battery storage solutions to store off-peak energy and support
+            fast charging during peak grid hours.</p>
         </div>
         <div class="glass-panel p-6 rounded-2xl">
           <i class="fa-solid fa-code text-[#F59E0B] text-2xl mb-4"></i>
           <h4 class="text-lg font-heading">API Load Controls</h4>
-          <p class="text-xs text-[#9CA3AF] mt-2">Integrate with regional utility Demand Response (DR) events to lower power consumption during grid emergencies.</p>
+          <p class="text-xs text-[#9CA3AF] mt-2">Integrate with regional utility Demand Response (DR) events to lower
+            power consumption during grid emergencies.</p>
         </div>
       </div>
 
@@ -475,8 +821,10 @@
       <div class="glass-panel p-8 rounded-3xl max-w-md mx-auto text-center space-y-4">
         <h4 class="text-xl font-heading">Grid Consulting Audit</h4>
         <p class="text-2xl font-heading text-[#10B981]">$499<span class="text-xs text-[#9CA3AF]">/audit</span></p>
-        <p class="text-xs text-[#9CA3AF]">Includes grid capacity site check, sub-panel schematic design, and local utility application support.</p>
-        <a href="register.html" class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Schedule Grid Audit</a>
+        <p class="text-xs text-[#9CA3AF]">Includes grid capacity site check, sub-panel schematic design, and local
+          utility application support.</p>
+        <a href="register.html"
+          class="block w-full py-2.5 rounded-full bg-[#10B981] text-white text-sm font-medium">Schedule Grid Audit</a>
       </div>
     </div>
 
@@ -496,7 +844,8 @@
           <span>EV <span class="brand-green">FLEET</span></span>
         </a>
         <p class="text-xs leading-relaxed text-[#9CA3AF] max-w-sm">
-          EV Fleet delivers hardware, cloud-based load management, and fleet portal tracking to power zero-emission logistics and transit fleets.
+          EV Fleet delivers hardware, cloud-based load management, and fleet portal tracking to power zero-emission
+          logistics and transit fleets.
         </p>
         <div class="flex gap-3 pt-2">
           <a href="#" class="social-icon-btn instagram" title="Instagram">
@@ -542,7 +891,8 @@
         <h5 class="footer-header">Headquarters</h5>
         <ul class="space-y-3 text-xs">
           <li class="flex items-start gap-3">
-            <div class="w-7 h-7 rounded-lg bg-[#06B6D4]/10 border border-[#06B6D4]/20 flex items-center justify-center text-[#06B6D4] shrink-0 mt-0.5">
+            <div
+              class="w-7 h-7 rounded-lg bg-[#06B6D4]/10 border border-[#06B6D4]/20 flex items-center justify-center text-[#06B6D4] shrink-0 mt-0.5">
               <i class="fa-solid fa-location-dot text-xs text-center"></i>
             </div>
             <span class="leading-relaxed text-[#D1D5DB]">
@@ -550,7 +900,8 @@
             </span>
           </li>
           <li class="flex items-center gap-3">
-            <div class="w-7 h-7 rounded-lg bg-[#10B981]/10 border border-[#10B981]/20 flex items-center justify-center text-[#10B981] shrink-0">
+            <div
+              class="w-7 h-7 rounded-lg bg-[#10B981]/10 border border-[#10B981]/20 flex items-center justify-center text-[#10B981] shrink-0">
               <i class="fa-solid fa-envelope text-xs text-center"></i>
             </div>
             <a href="mailto:sales@evfleetcharging.com" class="text-[#D1D5DB] hover:text-white transition-colors">
@@ -558,7 +909,8 @@
             </a>
           </li>
           <li class="flex items-center gap-3">
-            <div class="w-7 h-7 rounded-lg bg-[#F59E0B]/10 border border-[#F59E0B]/20 flex items-center justify-center text-[#F59E0B] shrink-0">
+            <div
+              class="w-7 h-7 rounded-lg bg-[#F59E0B]/10 border border-[#F59E0B]/20 flex items-center justify-center text-[#F59E0B] shrink-0">
               <i class="fa-solid fa-phone text-xs text-center"></i>
             </div>
             <a href="tel:8005550122" class="text-[#D1D5DB] hover:text-white transition-colors">
@@ -570,11 +922,13 @@
     </div>
 
     <!-- Bottom bar -->
-    <div class="container max-w-7xl mx-auto px-4 pt-6 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs relative z-10">
+    <div
+      class="container max-w-7xl mx-auto px-4 pt-6 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs relative z-10">
       <p class="text-[#6B7280]">&copy; 2026 EV Fleet Charging Solutions. Powering Zero-Emission Transit.</p>
       <div class="flex gap-6">
         <a href="#" class="hover:text-[#F3F4F6] text-gray-500 transition-colors text-decoration-none">Privacy Policy</a>
-        <a href="#" class="hover:text-[#F3F4F6] text-gray-500 transition-colors text-decoration-none">Service Agreement</a>
+        <a href="#" class="hover:text-[#F3F4F6] text-gray-500 transition-colors text-decoration-none">Service
+          Agreement</a>
       </div>
     </div>
   </footer>
@@ -623,4 +977,5 @@
   </script>
   <script src="js/main.js"></script>
 </body>
+
 </html>

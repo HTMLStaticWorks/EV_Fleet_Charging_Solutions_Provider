@@ -107,27 +107,20 @@
   <!-- Page Header / Hero Section -->
   <header class="pt-32 pb-20 relative overflow-hidden flex items-center">
     <div class="bg-gradient-orb orb-secondary"></div>
-    <div class="container max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center relative z-10">
-      <div class="lg:col-span-7 space-y-6 text-left" data-aos="fade-right">
-        <span class="text-xs uppercase tracking-widest text-[#06B6D4] font-heading">Seamless Power Transition</span>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading leading-tight">
-          Fleet Consulting <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-[#10B981] text-glow-secondary">& Design Services</span>
-        </h1>
-        <p class="text-[#D1D5DB] text-lg font-light leading-relaxed max-w-xl">
-          Accelerate your transition to zero emissions, optimize depot energy load, and navigate local grid limitations with our certified advisory engineers.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-3 pt-2">
-          <a href="#consultants-section" class="px-8 py-3 rounded-full bg-[#10B981] text-white glow-btn-primary hover:bg-[#10B981]/90 transition-all font-medium text-center w-full sm:w-auto">
-            Meet Our Consultants
-          </a>
-        </div>
+    <div class="container max-w-3xl mx-auto px-4 text-center space-y-6 relative z-10" data-aos="fade-up">
+      <span class="text-xs uppercase tracking-widest text-[#06B6D4] font-heading block">Seamless Power Transition</span>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading leading-tight mx-auto">
+        Fleet Consulting <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-[#10B981] text-glow-secondary">& Design Services</span>
+      </h1>
+      <p class="text-[#D1D5DB] text-lg font-light leading-relaxed max-w-xl mx-auto">
+        Accelerate your transition to zero emissions, optimize depot energy load, and navigate local grid limitations with our certified advisory engineers.
+      </p>
+      <div class="flex justify-center gap-3 pt-2">
+        <a href="#consultants-section" class="px-8 py-3 rounded-full bg-[#10B981] text-white glow-btn-primary hover:bg-[#10B981]/90 transition-all font-medium text-center w-full sm:w-auto">
+          Meet Our Consultants
+        </a>
       </div>
-      <div class="lg:col-span-5 relative" data-aos="fade-left">
-        <div class="h-[300px] sm:h-[400px] rounded-3xl overflow-hidden border border-gray-800 shadow-2xl relative">
-          <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80" alt="EV infrastructure client consulting session" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0B0F19]/60 to-transparent opacity-50"></div>
-        </div>
-      </div>
+      
     </div>
   </header>
 
@@ -138,10 +131,10 @@
       <p class="text-[#9CA3AF] text-sm max-w-md mx-auto mt-2">Grid planners, electrical engineers, and IoT programmers ready to coordinate your depot electrification plan.</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
       <!-- Profile 1 -->
       <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="100">
-        <div class="h-64 relative overflow-hidden">
+        <div class="h-80 xl:h-[460px] relative overflow-hidden">
           <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Consultant Sarah" class="w-full h-full object-cover">
         </div>
         <div class="p-6 space-y-3">
@@ -153,8 +146,8 @@
 
       <!-- Profile 2 -->
       <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="200">
-        <div class="h-64 relative overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Consultant Dan" class="w-full h-full object-cover">
+        <div class="h-80 xl:h-[460px] relative overflow-hidden">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQffwYOyLWW-5qITODM6mZj50Wauj9OuufHSkeqdnzeOAm3gQfUb5c6kl4&s=10" alt="Consultant Dan" class="w-full h-full object-cover">
         </div>
         <div class="p-6 space-y-3">
           <span class="text-xs text-[#10B981] font-heading uppercase tracking-wider">Municipal Fleet Electrification</span>
@@ -163,9 +156,9 @@
         </div>
       </div>
 
-      <!-- Profile 3 -->
-      <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover" data-aos="fade-up" data-aos-delay="300">
-        <div class="h-64 relative overflow-hidden">
+      <!-- Profile 3 — centered at md (spans both cols, max-width matches a single col) -->
+      <div class="glass-panel rounded-2xl overflow-hidden glass-card-hover md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0 w-full" data-aos="fade-up" data-aos-delay="300">
+        <div class="h-80 xl:h-[460px] relative overflow-hidden">
           <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" alt="Consultant Liam" class="w-full h-full object-cover">
         </div>
         <div class="p-6 space-y-3">
@@ -189,8 +182,8 @@
         <!-- Phase 1 -->
         <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
           data-aos="fade-up" data-aos-delay="100">
-          <div class="h-44 relative overflow-hidden border-b border-gray-800 shrink-0">
-            <img src="https://images.pexels.com/photos/7590967/pexels-photo-7590967.jpeg" alt="Initial Assessment Grid"
+          <div class="h-80 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVn_XltKqjR-wTnHpG-5ViC477DXglPlEI8SeIo8TDRZja7cD908GtFps&s=10" alt="Initial Assessment Grid"
               class="w-full h-full object-cover">
             <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#10B981] text-white text-xs font-heading flex items-center justify-center shadow-lg">1</span>
           </div>
@@ -202,8 +195,8 @@
         <!-- Phase 2 -->
         <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
           data-aos="fade-up" data-aos-delay="200">
-          <div class="h-44 relative overflow-hidden border-b border-gray-800 shrink-0">
-            <img src="https://images.pexels.com/photos/9545909/pexels-photo-9545909.jpeg" alt="Depot Charging Blueprints"
+          <div class="h-80 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQVSOuzSI9QrpWC9iWNn-SQOP17RewIDzLL6ma2Pf0PLlqDOGHDFTXNJU&s=10" alt="Depot Charging"
               class="w-full h-full object-cover">
             <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#06B6D4] text-[#0B0F19] text-xs font-heading flex items-center justify-center shadow-lg">2</span>
           </div>
@@ -215,8 +208,8 @@
         <!-- Phase 3 -->
         <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
           data-aos="fade-up" data-aos-delay="300">
-          <div class="h-44 relative overflow-hidden border-b border-gray-800 shrink-0">
-            <img src="https://images.pexels.com/photos/6676174/pexels-photo-6676174.jpeg" alt="Cloud Software Testing"
+          <div class="h-80 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://media.licdn.com/dms/image/v2/D5612AQHnxI2SiztVZA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1714737258003?e=2147483647&v=beta&t=k6mmU2AW_ig6QWOt5OKDa9ie22zBrqJOGl_4k5NylYs" alt="Cloud Software Testing"
               class="w-full h-full object-cover">
             <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-[#F59E0B] text-[#0B0F19] text-xs font-heading flex items-center justify-center shadow-lg">3</span>
           </div>
@@ -228,8 +221,8 @@
         <!-- Phase 4 -->
         <div class="glass-panel rounded-2xl overflow-hidden hover:border-gray-700 transition-all text-left flex flex-col"
           data-aos="fade-up" data-aos-delay="400">
-          <div class="h-44 relative overflow-hidden border-b border-gray-800 shrink-0">
-            <img src="https://images.pexels.com/photos/5383505/pexels-photo-5383505.jpeg" alt="Depot Commissioning"
+          <div class="h-80 relative overflow-hidden border-b border-gray-800 shrink-0">
+            <img src="https://globaldrivetozero.org/site/wp-content/uploads/2025/06/Zeem_Alex_Charging-1200x800.jpg" alt="Depot Commissioning"
               class="w-full h-full object-cover">
             <span class="absolute top-3 left-3 w-7 h-7 rounded-full bg-emerald-400 text-[#0B0F19] text-xs font-heading flex items-center justify-center shadow-lg">4</span>
           </div>
@@ -279,7 +272,7 @@
         <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between border-t-2 border-t-[#10B981] relative hover:border-gray-750 transition-all">
           <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#10B981] text-white text-[10px] uppercase tracking-wider px-3 py-1 rounded-full whitespace-nowrap">Recommended</span>
           <div class="space-y-4">
-            <h3 class="text-xl font-heading">Managed Deployment</h3>
+            <h3 class="text-xl font-heading">Managed </h3>
             <div class="flex items-baseline gap-1">
               <span class="text-3xl font-heading">$249</span>
               <span class="text-xs text-[#9CA3AF]">/ month</span>
@@ -295,14 +288,14 @@
             </ul>
           </div>
           <a href="register.html" class="mt-8 w-full text-center py-3 rounded-full bg-[#10B981] text-white glow-btn-primary hover:bg-[#10B981]/90 transition-all text-xs font-medium uppercase tracking-wider">
-            Unlock Managed Deployment
+             Managed Deployment
           </a>
         </div>
 
-        <!-- Pass 3 -->
-        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between hover:border-gray-700 transition-all">
+        <!-- Pass 3 — centered at md breakpoint, same size as card 2 -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between hover:border-gray-700 transition-all md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0">
           <div class="space-y-4">
-            <h3 class="text-xl font-heading">Enterprise Grid Support</h3>
+            <h3 class="text-xl font-heading">Enterprise Support</h3>
             <div class="flex items-baseline gap-1">
               <span class="text-3xl font-heading">$499</span>
               <span class="text-xs text-[#9CA3AF]">/ month</span>
@@ -318,7 +311,7 @@
             </ul>
           </div>
           <a href="register.html" class="mt-8 w-full text-center py-3 rounded-full border border-[#10B981] bg-[#10B981]/10 text-[#F3F4F6] hover:bg-[#10B981] hover:text-white transition-all text-xs font-medium uppercase tracking-wider">
-            Unlock Enterprise Support
+            Unlock Enterprise
           </a>
         </div>
       </div>

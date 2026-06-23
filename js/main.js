@@ -90,6 +90,22 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       backToTopBtn?.classList.remove('show');
     }
+
+    if (backToTopBtn && backToTopBtn.classList.contains('show')) {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const clientHeight = document.documentElement.clientHeight;
+      const distanceFromBottom = scrollHeight - scrollTop - clientHeight;
+      const footer = document.querySelector('footer');
+      const footerHeight = footer ? footer.offsetHeight : 0;
+
+      if (distanceFromBottom < footerHeight) {
+        const offset = footerHeight - distanceFromBottom + 24;
+        backToTopBtn.style.bottom = `${offset}px`;
+      } else {
+        backToTopBtn.style.bottom = '24px';
+      }
+    }
   });
 
   // Back to top scroll handler

@@ -1454,3 +1454,94 @@ footer .grid>div .flex.w-7.h-7 i {
   border-left: 3px solid #059669 !important;
   color: #059669 !important;
 }
+
+/* ==========================================================================
+   Leaderboard Table — Light Mode Fix
+   Bootstrap table-dark forces dark backgrounds; override in light mode.
+   ========================================================================== */
+[data-theme="light"] .glass-panel .table-dark,
+[data-theme="light"] .glass-panel .table-dark thead,
+[data-theme="light"] .glass-panel .table-dark tbody,
+[data-theme="light"] .glass-panel .table-dark tfoot,
+[data-theme="light"] .glass-panel .table-dark tr,
+[data-theme="light"] .glass-panel .table-dark th,
+[data-theme="light"] .glass-panel .table-dark td {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .glass-panel .table-dark thead tr {
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+}
+
+[data-theme="light"] .glass-panel .table-dark thead th {
+  color: var(--text-muted) !important;
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"] .glass-panel .table-dark tbody tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .glass-panel .table-hover tbody tr:hover,
+[data-theme="light"] .glass-panel .table-hover tbody tr:hover td {
+  background-color: rgba(5, 150, 105, 0.06) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ==========================================================================
+   Leaderboard Table — Dark Mode Hover Fix
+   Bootstrap table-dark hover turns rows near-black, hiding colored text.
+   Override to a visible green-tinted highlight that keeps all text readable.
+   ========================================================================== */
+.glass-panel .table-dark.table-hover tbody tr:hover,
+.glass-panel .table-dark.table-hover tbody tr:hover td {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  /* Visible green tint instead of near-black */
+}
+
+/* Keep rank numbers cyan on hover */
+.glass-panel .table-dark.table-hover tbody tr:hover td.text-\[\#06B6D4\],
+.glass-panel .table-dark.table-hover tbody tr:hover td .text-\[\#06B6D4\] {
+  color: #06B6D4 !important;
+}
+
+/* Keep efficiency percentages amber on hover */
+.glass-panel .table-dark.table-hover tbody tr:hover td.text-\[\#F59E0B\] {
+  color: #F59E0B !important;
+}
+
+/* Keep hub names white on hover */
+.glass-panel .table-dark.table-hover tbody tr:hover td,
+.glass-panel .table-dark.table-hover tbody tr:hover td span {
+  color: #F3F4F6 !important;
+}
+
+/* Specifically keep the cyan rank and energy savings text visible */
+.glass-panel .table-dark.table-hover tbody tr:hover td:first-child,
+.glass-panel .table-dark.table-hover tbody tr:hover td:last-child {
+  color: #06B6D4 !important;
+}
+
+/* Peak efficiency column (amber) */
+.glass-panel .table-dark.table-hover tbody tr:hover td:nth-child(3) {
+  color: #F59E0B !important;
+}
+
+/* ==========================================================================
+   Footer — 2×2 Grid at 768px (md)
+   At md the footer inner grid collapses from 12-col to 2-col so each
+   logical column (brand, explore, fleet-portal, headquarters) gets one cell.
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .premium-footer .grid.md\:grid-cols-12 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Make each named column span exactly 1 of the 2 new columns */
+  .premium-footer .grid.md\:grid-cols-12 > div.md\:col-span-4,
+  .premium-footer .grid.md\:grid-cols-12 > div.md\:col-span-2 {
+    grid-column: span 1 !important;
+  }
+}
