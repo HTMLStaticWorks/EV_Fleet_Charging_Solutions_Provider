@@ -51,12 +51,12 @@
   </style>
 </head>
 
-<body class="bg-[#0B0F19] text-[#F3F4F6] min-h-screen flex flex-col lg:flex-row overflow-x-hidden">
+<body class="bg-[#0B0F19] text-[#F3F4F6] h-screen overflow-hidden flex flex-col lg:flex-row">
 
   <!-- Sidebar Navigation (Desktop) -->
   <aside
-    class="hidden lg:flex flex-col w-64 glass-panel border-r border-gray-900 min-h-screen p-6 justify-between shrink-0">
-    <div class="space-y-8">
+    class="hidden lg:flex flex-col w-64 glass-panel border-r border-gray-900 p-6 justify-between shrink-0 sticky top-0 h-screen overflow-y-auto">
+    <div class="space-y-8 flex flex-col flex-1">
       <div class="flex justify-between items-center">
         <a class="brand-logo flex items-center gap-2 text-lg" href="index.html">
           <i class="fa-solid fa-bolt-lightning text-[#06B6D4]"></i>
@@ -65,7 +65,7 @@
       </div>
 
       <!-- Navigation Links -->
-      <nav class="space-y-1">
+      <nav class="space-y-1 flex-1">
         <button onclick="showSection('overview')" id="nav-overview"
           class="sidebar-link w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-xs text-[#9CA3AF] hover:text-white transition-all active">
           <i class="fa-solid fa-chart-pie w-4"></i> Dashboard
@@ -122,7 +122,7 @@
   </aside>
 
   <!-- Right Panel Content Wrapper -->
-  <div class="flex-1 flex flex-col min-h-screen w-full max-w-full overflow-x-hidden">
+  <div class="flex-1 flex flex-col h-full max-h-full overflow-hidden">
     <!-- Top Header Bar -->
     <header
       class="w-full glass-panel border-b border-gray-900 px-4 md:px-6 py-4 flex justify-between items-center bg-[#0B0F19]/40 backdrop-blur-md sticky top-0 z-30">

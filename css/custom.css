@@ -1540,8 +1540,211 @@ footer .grid>div .flex.w-7.h-7 i {
   }
 
   /* Make each named column span exactly 1 of the 2 new columns */
+  /* Make each named column span exactly 1 of the 2 new columns */
   .premium-footer .grid.md\:grid-cols-12 > div.md\:col-span-4,
   .premium-footer .grid.md\:grid-cols-12 > div.md\:col-span-2 {
     grid-column: span 1 !important;
+  }
+}
+
+/* ==========================================================================
+   FIX 1: Brand Name — Consistent Color & Font Size Throughout (Header + Footer)
+   The footer brand logo must be exactly the same size/weight as the navbar.
+   ========================================================================== */
+
+/* Force the brand logo icon to use the exact same CSS-variable color
+   whether it is in the navbar, footer, or dashboard sidebar */
+.brand-logo i.fa-bolt-lightning {
+  color: var(--secondary) !important;
+}
+
+/* Enforce identical font-size for .brand-logo everywhere — overrides any
+   inline Tailwind size classes (text-lg, text-2xl, etc.) that could differ */
+.brand-logo,
+footer .brand-logo,
+.premium-footer .brand-logo,
+aside .brand-logo,
+header .brand-logo {
+  font-size: 1.25rem !important;
+  font-weight: 550 !important;
+  letter-spacing: 0.05em !important;
+  color: var(--secondary) !important;
+}
+
+[data-theme="light"] .premium-footer .brand-logo > span,
+.premium-footer .brand-logo > span,
+.brand-logo > span {
+  color: var(--secondary) !important;
+}
+
+.brand-logo .brand-green,
+footer .brand-logo .brand-green,
+.premium-footer .brand-logo .brand-green,
+aside .brand-logo .brand-green,
+header .brand-logo .brand-green {
+  color: var(--primary) !important;
+  font-weight: 550 !important;
+}
+
+[data-theme="light"] .brand-logo i.fa-bolt-lightning {
+  color: var(--secondary) !important;
+}
+
+/* ==========================================================================
+   FIX 2: Mobile & Tablet Hamburger Menu — Active State Highlighting
+   The JS sets text-[#06B6D4] on the active link, but needs a visible
+   background highlight to be noticeable inside the dropdown menu.
+   ========================================================================== */
+
+/* Active link in the public site mobile menu */
+#mobile-menu a.text-\[\#06B6D4\] {
+  background-color: rgba(6, 182, 212, 0.12) !important;
+  border-radius: 0.5rem !important;
+  border-left: 3px solid var(--secondary) !important;
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+  font-weight: 600 !important;
+  color: var(--secondary) !important;
+}
+
+[data-theme="light"] #mobile-menu a.text-\[\#06B6D4\] {
+  background-color: rgba(8, 145, 178, 0.1) !important;
+  border-left-color: var(--secondary) !important;
+  color: var(--secondary) !important;
+}
+
+/* ==========================================================================
+   FIX 3: RTL Mode — Hero Section Image Layout Fix (Home Page 1)
+   Correct negative-offset badges and prevent image overflow in RTL.
+   ========================================================================== */
+
+/* Keep the hero right-column (image frame) in LTR direction in RTL mode */
+[dir="rtl"] section .lg\:col-span-6.flex.justify-center.relative {
+  direction: ltr !important;
+}
+
+/* The floating badge uses -left-8 / lg:-left-16; flip to right side in RTL */
+[dir="rtl"] .absolute.-top-8.-left-8 {
+  left: auto !important;
+  right: -2rem !important;
+}
+
+[dir="rtl"] .absolute.-top-8.lg\:-left-16 {
+  left: auto !important;
+  right: -1rem !important;
+}
+
+@media (min-width: 1024px) {
+  [dir="rtl"] .absolute.-top-8.lg\:-left-16 {
+    right: -4rem !important;
+  }
+}
+
+/* Prevent hero image card from overflowing its container in RTL */
+[dir="rtl"] section .relative.w-full.max-w-md.rounded-3xl.overflow-hidden {
+  overflow: hidden !important;
+}
+
+/* ==========================================================================
+   FIX 4: Coaching Page — "Schedule A Depot Consultation" Form on 360px
+   Stack the Preferred Date and Preferred Time inputs into a single column.
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  /* Target the date/time grid in the booking form */
+  section .glass-panel form .grid.grid-cols-2.gap-4 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   FIX 5: Contact Page — "Send A Message" form on 360px
+   Stack first name + last name inputs into a single column.
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  #contact-section form .grid.grid-cols-2.gap-4 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   FIX 6a: Dashboard — Sidebar Sticky to Viewport (does not scroll with page)
+   ========================================================================== */
+
+/* Make the aside sidebar stick to the top of the viewport */
+body > aside,
+.min-h-screen.flex.lg\:flex-row > aside {
+  position: sticky !important;
+  top: 0 !important;
+  height: 100vh !important;
+  overflow-y: auto !important;
+  flex-shrink: 0 !important;
+  align-self: flex-start !important;
+}
+
+/* ==========================================================================
+   FIX 6b: Dashboard — Logout Button Position Consistency
+   User/logout block must always pin to the bottom of the sidebar.
+   ========================================================================== */
+
+/* The sidebar wrapper space-y-8 must be flex-grow so the logout area
+   remains pinned to the bottom across ALL panel views */
+aside > div.space-y-8 {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+}
+
+aside > div.space-y-8 > nav.space-y-1 {
+  flex: 1 !important;
+}
+
+/* The user/logout row at the bottom of the sidebar */
+aside > div.flex.items-center.gap-3.border-t {
+  flex-shrink: 0 !important;
+  margin-top: auto !important;
+}
+
+/* ==========================================================================
+   FIX 7: Dashboard Fleet Analytics — "Energy Source Allocation" Mobile Layout
+   On screens <= 640px the pie + legend overflows. Stack them vertically.
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  /* Stack pie chart and legend vertically */
+  #panel-progress .h-64 > .w-full.h-full.flex.items-center.justify-center {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    padding: 0.5rem !important;
+    overflow: visible !important;
+  }
+
+  /* Scale down the donut ring */
+  #panel-progress .relative.w-40.h-40.rounded-full {
+    width: 6.5rem !important;
+    height: 6.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Move legend below the donut — remove left margin, wrap items */
+  #panel-progress .ml-6.space-y-2 {
+    margin-left: 0 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.35rem 0.75rem !important;
+  }
+
+  #panel-progress .ml-6.space-y-2 > div {
+    margin: 0 !important;
+  }
+
+  /* Give the outer card height room for stacked layout */
+  #panel-progress .h-64 {
+    height: auto !important;
+    min-height: 15rem !important;
   }
 }
